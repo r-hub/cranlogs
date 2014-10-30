@@ -1,0 +1,56 @@
+
+```{r, setup, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  tidy = FALSE,
+  error = FALSE)
+```
+
+# Download logs from the RStudio CRAN mirror
+
+[RStudio](http://www.rstudio.com) publishes the download logs from
+their CRAN package mirror daily at http://cran-logs.rstudio.com.
+
+This R package queries a database that contains the daily download
+numbers for each package.
+
+## Installation
+
+You can install `cranlogs` from Github:
+
+```{r}
+library(devtools)
+install_github("metacran/cranlogs")
+```
+
+## Usage
+
+It has a very simple API. By default it shows the total number of
+package downloads from the previous day.
+
+```{r}
+library(cranlogs)
+cran_downloads()
+```
+
+The last week, or the last month can be also easily queried:
+
+```{r}
+cran_downloads(when = "last-week")
+```
+
+The `package` argument queries a specific package:
+
+```{r}
+cran_downloads(when = "last-week", package = "magrittr")
+```
+
+Alternative intervals can also be specified:
+
+```{r}
+cran_downloads(package = "plyr", from = "2014-01-01", to = "2014-02-01")
+```
+
+## Raw JSON API
+
+See [here](https://github.com/metacran/cranlogs.app).
