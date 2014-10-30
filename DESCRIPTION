@@ -1,8 +1,13 @@
 Package: cranlogs
-Title: What the package does (one line)
-Version: 0.1
-Authors@R: "First Last <first.last@example.com> [aut, cre]"
-Description: What the package does (one paragraph)
-Depends: R (>= 3.1.1)
-License: What license is it under?
-LazyData: true
+Title: Download Logs from the RStudio CRAN Mirror
+Version: 1.0.0
+Authors@R: "Gabor Csardi <csardi.gabor@gmail.com> [aut, cre]"
+Description: API to the database of CRAN package downloads from the RStudio
+    CRAN mirror. The database itself is at http://cranlogs.r-pkg.org, see
+    https://github.com/metacran/cranlogs.app for the raw API.
+License: MIT + file LICENSE
+URL: https://github.com/metacran/cranlogs
+BugReports: https://github.com/metacran/cranlogs/issues
+Imports:
+    httr,
+    jsonlite
