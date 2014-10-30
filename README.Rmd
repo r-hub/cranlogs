@@ -8,6 +8,9 @@ knitr::opts_chunk$set(
 
 # Download logs from the RStudio CRAN mirror
 
+[![Linux Build Status](https://travis-ci.org/metacran/cranlogs.png?branch=master)](https://travis-ci.org/metacran/cranlogs)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/metacran/cranlogs)](https://ci.appveyor.com/project/metacran/cranlogs)
+
 [RStudio](http://www.rstudio.com) publishes the download logs from
 their CRAN package mirror daily at http://cran-logs.rstudio.com.
 
