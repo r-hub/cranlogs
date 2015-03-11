@@ -3,12 +3,12 @@
 \alias{cran_downloads}
 \title{Daily package downloads from the RStudio CRAN mirror}
 \usage{
-cran_downloads(package = NULL, when = c("last-day", "last-week",
+cran_downloads(packages = NULL, when = c("last-day", "last-week",
   "last-month"), from = "last-day", to = "last-day")
 }
 \arguments{
-\item{package}{A package to query, or \code{NULL} for a sum of
-downloads for all packages.}
+\item{packages}{A character vector, the packages to query,
+or \code{NULL} for a sum of downloads for all packages.}
 
 \item{when}{\code{last_day}, \code{last_week} or \code{last_month}.
 If this is given, then \code{from} and \code{to} are ignored.}
@@ -20,14 +20,11 @@ If this is given, then \code{from} and \code{to} are ignored.}
 \code{yesterday}. It is ignored if \code{when} is given.}
 }
 \value{
-A list with entries: \itemize{
-  \item \code{downloads} The downloads, in a two-column data frame:
-    date and download count.
-  \item \code{start} Start date.
-  \item \code{end} End date.
-  \item \code{package} The queried package. This entry is missing
-    if the total number of downloads for all packages was queried.
-}
+A data frame with columns:
+  \item \code{package} The package. This column is missing if
+    all packages were queried.
+  \item \code{date} Day of the downloads.
+  \item \code{count} Download count.
 }
 \description{
 Daily package downloads from the RStudio CRAN mirror
@@ -37,12 +34,15 @@ Daily package downloads from the RStudio CRAN mirror
 cran_downloads()
 
 ## All downloads for 'dplyr' yesterday
-cran_downloads(package = "dplyr")
+cran_downloads(packages = "dplyr")
 
 ## Daily downloads for 'igraph' last week
-cran_downloads(package = "igraph", when = "last-week")
+cran_downloads(packages = "igraph", when = "last-week")
 
 ## Downloads in the specified time interval
 cran_downloads(from = "2014-06-30", to = "2014-08-08")
+
+## Multiple packages
+cran_downloads(packages = c("ggplot2", "plyr", "dplyr"))
 }
 
