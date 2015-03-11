@@ -23,7 +23,7 @@ If this is given, then \code{from} and \code{to} are ignored.}
 A data frame with columns:
   \item \code{package} The package. This column is missing if
     all packages were queried.
-  \item \code{date} Day of the downloads.
+  \item \code{date} Day of the downloads, it is a Date object.
   \item \code{count} Download count.
 }
 \description{

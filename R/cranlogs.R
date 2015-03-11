@@ -23,7 +23,7 @@ url <- "http://cranlogs.r-pkg.org/downloads/daily/"
 #' @return A data frame with columns:
 #'   \item \code{package} The package. This column is missing if
 #'     all packages were queried.
-#'   \item \code{date} Day of the downloads.
+#'   \item \code{date} Day of the downloads, it is a Date object.
 #'   \item \code{count} Download count.
 #'
 #' @export
@@ -76,7 +76,7 @@ to_df <- function(res) {
   if (length(res) == 1 && is.null(res[[1]]$package)) {
     data.frame(
       stringsAsFactors = FALSE,
-      date = sapply(res[[1]]$downloads, "[[", "day"),
+      date = as.Date(sapply(res[[1]]$downloads, "[[", "day")),
       count = sapply(res[[1]]$downloads, "[[", "downloads")
     )
 
@@ -87,7 +87,7 @@ to_df <- function(res) {
         data.frame(
           stringsAsFactors = FALSE,
           package = x$package,
-          date = sapply(x$downloads, "[[", "day"),
+          date = as.Date(sapply(x$downloads, "[[", "day")),
           count = sapply(x$downloads, "[[", "downloads")
           )
       })
