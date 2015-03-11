@@ -45,7 +45,7 @@ cran_downloads(when = "last-week")
 The `package` argument queries a specific package:
 
 ```{r}
-cran_downloads(when = "last-week", package = "magrittr")
+cran_downloads(when = "last-week", package = c("magrittr", "dplyr"))
 ```
 
 Alternative intervals can also be specified:
