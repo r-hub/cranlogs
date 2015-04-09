@@ -68,6 +68,10 @@ cran_downloads <- function(packages = NULL,
   r <- fromJSON(content(GET(paste0(url, interval, packages)), as = "text"),
                 simplifyVector = FALSE)
 
+  if ("error" %in% names(r) && r$error == "Invalid query") {
+    stop("Invalid query, probably invalid dates")
+  }
+
   to_df(r)
 
 }
