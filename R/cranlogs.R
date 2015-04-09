@@ -17,9 +17,9 @@ url <- "http://cranlogs.r-pkg.org/downloads/daily/"
 #' @param when \code{last_day}, \code{last_week} or \code{last_month}.
 #'   If this is given, then \code{from} and \code{to} are ignored.
 #' @param from Start date, in \code{yyyy-mm-dd} format, or
-#'   \code{yesterday}. It is ignored if \code{when} is given.
+#'   \code{last-day}. It is ignored if \code{when} is given.
 #' @param to End date, in \code{yyyy-mm-dd} format, or
-#'   \code{yesterday}. It is ignored if \code{when} is given.
+#'   \code{last-day}. It is ignored if \code{when} is given.
 #' @return A data frame with columns:
 #'   \item \code{package} The package. This column is missing if
 #'     all packages were queried.
@@ -74,23 +74,36 @@ cran_downloads <- function(packages = NULL,
 
 to_df <- function(res) {
   if (length(res) == 1 && is.null(res[[1]]$package)) {
-    data.frame(
-      stringsAsFactors = FALSE,
-      date = as.Date(sapply(res[[1]]$downloads, "[[", "day")),
-      count = sapply(res[[1]]$downloads, "[[", "downloads")
-    )
-
+    to_df_1(res[[1]])
   } else {
-    do.call(
-      rbind,
-      lapply(res, function(x) {
-        data.frame(
-          stringsAsFactors = FALSE,
-          package = x$package,
-          date = as.Date(sapply(x$downloads, "[[", "day")),
-          count = sapply(x$downloads, "[[", "downloads")
-          )
-      })
-    )
+    dfs <- lapply(res, to_df_1)
+    for (i in seq_along(res)) dfs[[i]]$package <- res[[i]]$package
+    do.call(rbind, dfs)
   }
+}
+
+to_df_1 <- function(res1) {
+  df <- data.frame(
+    stringsAsFactors = FALSE,
+    date = as.Date(vapply(res1$downloads, "[[", "", "day")),
+    count = vapply(res1$downloads, "[[", 1, "downloads")
+  )
+  fill_in_dates(df, as.Date(res1$start), as.Date(res1$end))
+}
+
+fill_in_dates <- function(df, start, end) {
+  if (start > end) stop("Empty time interval")
+  if (end > Sys.Date()) warning("Time interval in the future")
+
+  dates <- seq(start, end, by = as.difftime(1, units = "days"))
+  if (any(! dates %in% df$date)) {
+    df2 <- data.frame(
+      stringsAsFactors = FALSE,
+      date = dates[! dates %in% df$date],
+      count = 0
+    )
+    df <- rbind(df, df2)
+    df <- df[order(df$date),]
+  }
+  df
 }
