@@ -15,10 +15,10 @@ or \code{NULL} for a sum of downloads for all packages.}
 If this is given, then \code{from} and \code{to} are ignored.}
 
 \item{from}{Start date, in \code{yyyy-mm-dd} format, or
-\code{yesterday}. It is ignored if \code{when} is given.}
+\code{last-day}. It is ignored if \code{when} is given.}
 
 \item{to}{End date, in \code{yyyy-mm-dd} format, or
-\code{yesterday}. It is ignored if \code{when} is given.}
+\code{last-day}. It is ignored if \code{when} is given.}
 }
 \value{
 A data frame with columns:
