@@ -5,6 +5,7 @@
 
 [![Linux Build Status](https://travis-ci.org/metacran/cranlogs.svg?branch=master)](https://travis-ci.org/metacran/cranlogs)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/github/metacran/cranlogs?svg=true)](https://ci.appveyor.com/project/gaborcsardi/cranlogs)
+[![CRAN version](http://www.r-pkg.org/badges/version/cranlogs)](http://cran.rstudio.com/web/packages/cranlogs/index.html)
 
 [RStudio](http://www.rstudio.com) publishes the download logs from
 their CRAN package mirror daily at http://cran-logs.rstudio.com.
@@ -26,9 +27,8 @@ install_github("metacran/cranlogs")
 #> Downloading github repo metacran/cranlogs@master
 #> Installing cranlogs
 #> '/Library/Frameworks/R.framework/Resources/bin/R' --vanilla CMD INSTALL  \
-#>   '/private/var/folders/ws/7rmdm_cn2pd8l1c3lqyycv0c0000gn/T/RtmpjEx0oD/devtools17e7c1e2f982c/metacran-cranlogs-10e40e8'  \
-#>   --library='/Library/Frameworks/R.framework/Versions/3.2/Resources/library'  \
-#>   --install-tests
+#>   '/private/var/folders/ws/7rmdm_cn2pd8l1c3lqyycv0c0000gn/T/RtmpPkIqt7/devtools1b982d42cb22/metacran-cranlogs-e4aab96'  \
+#>   --library='/Users/gaborcsardi/r_pkgs' --install-tests
 ```
 
 ## Usage
