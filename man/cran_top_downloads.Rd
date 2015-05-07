@@ -9,6 +9,10 @@ cran_top_downloads(when = c("last-day", "last-week", "last-month"),
 }
 \arguments{
 \item{when}{\code{last_day}, \code{last_week} or \code{last_month}.}
+
+\item{count}{Number of packages to list. Note that the DB server
+lists only at most 100 packages. This number might change in the
+future.}
 }
 \value{
 A data frame with columns: \code{rank}, \code{package},

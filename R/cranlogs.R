@@ -23,10 +23,10 @@ top_url   <- paste0(base_url, "top/")
 #' @param to End date, in \code{yyyy-mm-dd} format, or
 #'   \code{last-day}. It is ignored if \code{when} is given.
 #' @return A data frame with columns:
-#'   \item \code{package} The package. This column is missing if
-#'     all packages were queried.
-#'   \item \code{date} Day of the downloads, it is a Date object.
-#'   \item \code{count} Download count.
+#'   \item{\code{package}}{The package. This column is missing if
+#'     all packages were queried.}
+#'   \item{\code{date}}{Day of the downloads, it is a Date object.}
+#'   \item{\code{count}}{Download count.}
 #'
 #' @family CRAN downloads
 #' @export
@@ -118,6 +118,9 @@ fill_in_dates <- function(df, start, end) {
 #' Top downloaded packages from the RStudio CRAN mirror
 #'
 #' @param when \code{last_day}, \code{last_week} or \code{last_month}.
+#' @param count Number of packages to list. Note that the DB server
+#'   lists only at most 100 packages. This number might change in the
+#'   future.
 #' @return A data frame with columns: \code{rank}, \code{package},
 #'   \code{count}, \code{from}, \code{to}.
 #'
