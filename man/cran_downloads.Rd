@@ -45,4 +45,7 @@ cran_downloads(from = "2014-06-30", to = "2014-08-08")
 ## Multiple packages
 cran_downloads(packages = c("ggplot2", "plyr", "dplyr"))
 }
+\seealso{
+Other CRAN.downloads: \code{\link{cran_top_downloads}}
+}
 

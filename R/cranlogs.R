@@ -8,7 +8,9 @@
 #' @importFrom jsonlite fromJSON
 NULL
 
-url <- "http://cranlogs.r-pkg.org/downloads/daily/"
+base_url  <- "http://cranlogs.r-pkg.org/"
+daily_url <- paste0(base_url, "downloads/daily/")
+top_url   <- paste0(base_url, "top/")
 
 #' Daily package downloads from the RStudio CRAN mirror
 #'
@@ -26,6 +28,7 @@ url <- "http://cranlogs.r-pkg.org/downloads/daily/"
 #'   \item \code{date} Day of the downloads, it is a Date object.
 #'   \item \code{count} Download count.
 #'
+#' @family CRAN downloads
 #' @export
 #' @examples
 #'
@@ -65,7 +68,7 @@ cran_downloads <- function(packages = NULL,
     packages <- paste0("/", packages)
   }
 
-  r <- fromJSON(content(GET(paste0(url, interval, packages)), as = "text"),
+  r <- fromJSON(content(GET(paste0(daily_url, interval, packages)), as = "text"),
                 simplifyVector = FALSE)
 
   if ("error" %in% names(r) && r$error == "Invalid query") {
@@ -109,5 +112,44 @@ fill_in_dates <- function(df, start, end) {
     df <- rbind(df, df2)
     df <- df[order(df$date),]
   }
+  df
+}
+
+#' Top downloaded packages from the RStudio CRAN mirror
+#'
+#' @param when \code{last_day}, \code{last_week} or \code{last_month}.
+#' @return A data frame with columns: \code{rank}, \code{package},
+#'   \code{count}, \code{from}, \code{to}.
+#'
+#' @family CRAN downloads
+#' @export
+#' @examples
+#'
+#' ## Default is last day
+#' cran_top_downloads()
+#'
+#' ## Last week instead
+#'cran_top_downloads(when = "last-week")
+
+cran_top_downloads <- function(when = c("last-day", "last-week",
+                                 "last-month"), count = 10) {
+
+  when <- match.arg(when)
+  r <- fromJSON(content(GET(paste0(top_url, when, '/', count)), as = "text"),
+                simplifyVector = FALSE)
+
+  df <- data.frame(
+    stringsAsFactors = FALSE,
+    rank = seq_along(r$downloads),
+    package = vapply(r$downloads, "[[", "", "package"),
+    count = as.integer(vapply(r$downloads, "[[", "", "downloads")),
+    from = as.Date(r$start),
+    to = as.Date(r$end)
+  )
+
+  if (nrow(df) != count) {
+    warning("Requested ", count, " packages, returned only ", nrow(df))
+  }
+
   df
 }
