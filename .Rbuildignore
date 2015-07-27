@@ -3,3 +3,5 @@
 ^Makefile$
 ^.travis.yml$
 ^appveyor.yml$
+^README.md$
+^NEWS.md$
