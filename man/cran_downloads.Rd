@@ -9,7 +9,9 @@ cran_downloads(packages = NULL, when = c("last-day", "last-week",
 }
 \arguments{
 \item{packages}{A character vector, the packages to query,
-or \code{NULL} for a sum of downloads for all packages.}
+or \code{NULL} for a sum of downloads for all packages.
+Alternatively, it can also be \code{"R"}, to query downloads
+of R itself. \code{"R"} cannot be mixed with packages.}
 
 \item{when}{\code{last_day}, \code{last_week} or \code{last_month}.
 If this is given, then \code{from} and \code{to} are ignored.}
@@ -21,11 +23,14 @@ If this is given, then \code{from} and \code{to} are ignored.}
 \code{last-day}. It is ignored if \code{when} is given.}
 }
 \value{
-A data frame with columns:
+For packages a data frame with columns:
   \item{\code{package}}{The package. This column is missing if
     all packages were queried.}
   \item{\code{date}}{Day of the downloads, it is a Date object.}
   \item{\code{count}}{Download count.}
+
+  For downloads of R, there are also columns for the operating
+  system (\code{os}) and the R version (\code{version}).
 }
 \description{
 Daily package downloads from the RStudio CRAN mirror
@@ -45,6 +50,9 @@ cran_downloads(from = "2014-06-30", to = "2014-08-08")
 
 ## Multiple packages
 cran_downloads(packages = c("ggplot2", "plyr", "dplyr"))
+
+## R downloads
+cran_downloads("R")
 }
 \seealso{
 Other CRAN.downloads: \code{\link{cran_top_downloads}}
