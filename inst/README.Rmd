@@ -10,7 +10,8 @@ knitr::opts_chunk$set(
 
 [![Linux Build Status](https://travis-ci.org/metacran/cranlogs.svg?branch=master)](https://travis-ci.org/metacran/cranlogs)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/github/metacran/cranlogs?svg=true)](https://ci.appveyor.com/project/gaborcsardi/cranlogs)
-[![CRAN version](http://www.r-pkg.org/badges/version/cranlogs)](http://cran.rstudio.com/web/packages/cranlogs/index.html)
+[![CRAN version](http://www.r-pkg.org/badges/version/cranlogs)](http://www.r-pkg.org/pkg/cranlogs)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/cranlogs)](http://www.r-pkg.org/pkg/cranlogs)
 
 [RStudio](http://www.rstudio.com) publishes the download logs from
 their CRAN package mirror daily at http://cran-logs.rstudio.com.
@@ -22,7 +23,7 @@ numbers for each package.
 
 You can install `cranlogs` from Github:
 
-```{r}
+```{r eval = FALSE}
 library(devtools)
 install_github("metacran/cranlogs")
 ```
@@ -53,6 +54,12 @@ Alternative intervals can also be specified:
 
 ```{r}
 cran_downloads(package = "plyr", from = "2014-01-01", to = "2014-02-01")
+```
+
+For downloads of R itself, give `"R"` instead of a package:
+
+```{r}
+cran_downloads("R")
 ```
 
 ## Top downloaded packages
