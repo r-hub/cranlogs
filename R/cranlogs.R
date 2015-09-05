@@ -3,8 +3,7 @@
 #'
 #' @docType package
 #' @name cranlogs
-#' @importFrom httr GET
-#' @importFrom httr content
+#' @importFrom httr GET content stop_for_status
 #' @importFrom jsonlite fromJSON
 NULL
 
@@ -79,8 +78,9 @@ cran_downloads <- function(packages = NULL,
     ppackages <- paste0("/", ppackages)
   }
 
-  r <- fromJSON(content(GET(paste0(daily_url, interval, ppackages)), as = "text"),
-                simplifyVector = FALSE)
+  req <- GET(paste0(daily_url, interval, ppackages))
+  stop_for_status(req)
+  r <- fromJSON(content(req, as = "text"), simplifyVector = FALSE)
 
   if ("error" %in% names(r) && r$error == "Invalid query") {
     stop("Invalid query, probably invalid dates")
@@ -162,8 +162,9 @@ cran_top_downloads <- function(when = c("last-day", "last-week",
                                  "last-month"), count = 10) {
 
   when <- match.arg(when)
-  r <- fromJSON(content(GET(paste0(top_url, when, '/', count)), as = "text"),
-                simplifyVector = FALSE)
+  req <- GET(paste0(top_url, when, '/', count))
+  stop_for_status(req)
+  r <- fromJSON(content(req, as = "text"), simplifyVector = FALSE)
 
   df <- data.frame(
     stringsAsFactors = FALSE,
