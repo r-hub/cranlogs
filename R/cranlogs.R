@@ -61,6 +61,11 @@ cran_downloads <- function(packages = NULL,
   if (!missing(when)) {
     interval <- match.arg(when)
   } else {
+  
+    if(missing(to)){
+      to=Sys.Date()
+    }
+  
     if (from == to) {
       interval <- from
     } else {
