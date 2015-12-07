@@ -35,7 +35,7 @@ top_url   <- paste0(base_url, "top/")
 #' @family CRAN downloads
 #' @export
 #' @examples
-#'
+#' \dontrun{
 #' ## All downloads yesterday
 #' cran_downloads()
 #'
@@ -53,6 +53,7 @@ top_url   <- paste0(base_url, "top/")
 #'
 #' ## R downloads
 #' cran_downloads("R")
+#' }
 
 cran_downloads <- function(packages = NULL,
                            when = c("last-day", "last-week", "last-month"),
@@ -151,12 +152,13 @@ fill_in_dates <- function(df, start, end) {
 #' @family CRAN downloads
 #' @export
 #' @examples
-#'
+#' \dontrun{
 #' ## Default is last day
 #' cran_top_downloads()
 #'
 #' ## Last week instead
-#'cran_top_downloads(when = "last-week")
+#' cran_top_downloads(when = "last-week")
+#' }
 
 cran_top_downloads <- function(when = c("last-day", "last-week",
                                  "last-month"), count = 10) {
