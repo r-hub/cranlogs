@@ -120,7 +120,7 @@ to_df_r <- function(res1) {
     os = vapply(res1$downloads, "[[", "", "os"),
     count = vapply(res1$downloads, "[[", 1, "downloads")
   )
-  fill_in_dates(df, as.Date(res1$start), as.Date(res1$end))
+  df
 }
 
 fill_in_dates <- function(df, start, end) {
