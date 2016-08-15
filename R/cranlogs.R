@@ -142,7 +142,7 @@ fill_in_dates <- function(df, start, end) {
 
 #' Top downloaded packages from the RStudio CRAN mirror
 #'
-#' @param when \code{last_day}, \code{last_week} or \code{last_month}.
+#' @param when \code{last-day}, \code{last-week} or \code{last-month}.
 #' @param count Number of packages to list. Note that the DB server
 #'   lists only at most 100 packages. This number might change in the
 #'   future.
