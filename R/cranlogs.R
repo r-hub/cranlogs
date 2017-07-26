@@ -136,6 +136,7 @@ fill_in_dates <- function(df, start, end) {
     )
     df <- rbind(df, df2)
     df <- df[order(df$date),]
+    rownames(df) <- NULL
   }
   df
 }
