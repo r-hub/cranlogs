@@ -1,6 +1,6 @@
 # cranlogs 2.1.1
 
-* Drop row names after reordering which avoids having meaningless row names (@patperry, #23s)
+* Drop row names after reordering which avoids having meaningless row names (@patperry, #23)
 
 * Fix R download counts if a day is missing data (e.g. 2015-08-23).
 
