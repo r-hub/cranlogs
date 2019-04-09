@@ -5,3 +5,5 @@
 ^appveyor.yml$
 ^README.md$
 ^NEWS.md$
+^.*\.Rproj$
+^\.Rproj\.user$
