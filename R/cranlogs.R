@@ -62,6 +62,14 @@ cran_downloads <- function(packages = NULL,
   if (!missing(when)) {
     interval <- match.arg(when)
   } else {
+    if (from != "last-day"){
+      check_date(from)
+    }
+    
+    if (to != "last-day"){
+      check_date(to)
+    }
+    
     if (from == to) {
       interval <- from
     } else {
