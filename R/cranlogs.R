@@ -167,8 +167,9 @@ cran_top_downloads <- function(when = c("last-day", "last-week",
   when <- match.arg(when)
   req <- GET(paste0(top_url, when, '/', count))
   stop_for_status(req)
-  r <- fromJSON(content(req, as = "text"), simplifyVector = FALSE)
-
+  r <- fromJSON(content(req, as = "text", encoding = "UTF-8"), 
+    simplifyVector = FALSE)
+  
   df <- data.frame(
     stringsAsFactors = FALSE,
     rank = seq_along(r$downloads),
