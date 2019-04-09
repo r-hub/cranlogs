@@ -57,6 +57,6 @@ cran_downloads("R")
 }
 }
 \seealso{
-Other CRAN.downloads: \code{\link{cran_top_downloads}}
+Other CRAN downloads: \code{\link{cran_top_downloads}}
 }
-
+\concept{CRAN downloads}

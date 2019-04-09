@@ -8,4 +8,3 @@
 \description{
 Download Logs from the RStudio CRAN Mirror
 }
-
