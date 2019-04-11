@@ -1,11 +1,7 @@
 
-#' Download Logs from the RStudio CRAN Mirror
-#'
-#' @docType package
-#' @name cranlogs
 #' @importFrom httr GET content stop_for_status
 #' @importFrom jsonlite fromJSON
-NULL
+
 
 base_url  <- "http://cranlogs.r-pkg.org/"
 daily_url <- paste0(base_url, "downloads/daily/")
