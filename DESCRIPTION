@@ -6,10 +6,10 @@ Authors@R: c(
     person("R Consortium", role = c("fnd")))
 Description: 'API' to the database of 'CRAN' package downloads from the
     'RStudio' 'CRAN mirror'. The database itself is at <http://cranlogs.r-pkg.org>,
-    see <https://github.com/metacran/cranlogs.app> for the raw 'API'.
+    see <https://github.com/r-hub/cranlogs.app> for the raw 'API'.
 License: MIT + file LICENSE
-URL: https://github.com/metacran/cranlogs
-BugReports: https://github.com/metacran/cranlogs/issues
+URL: https://github.com/r-hub/cranlogs, https://r-hub.github.io/cranlogs
+BugReports: https://github.com/r-hub/cranlogs/issues
 Imports:
     httr,
     jsonlite

@@ -4,7 +4,7 @@
 # Download logs from the RStudio CRAN mirror
 
 [![Linux Build
-Status](https://travis-ci.org/metacran/cranlogs.svg?branch=master)](https://travis-ci.org/metacran/cranlogs)
+Status](https://travis-ci.org/r-hub/cranlogs.svg?branch=master)](https://travis-ci.org/r-hub/cranlogs)
 [![Windows Build
 status](https://ci.appveyor.com/api/projects/status/github/metacran/cranlogs?svg=true)](https://ci.appveyor.com/project/gaborcsardi/cranlogs)
 [![CRAN
@@ -20,11 +20,17 @@ numbers for each package.
 
 ## Installation
 
-You can install `cranlogs` from Github:
+You can install `cranlogs` from CRAN:
+
+``` r
+install.packages("cranlogs"s)
+```
+
+Or get the development version from Github:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("metacran/cranlogs")
+remotes::install_github("r-hub/cranlogs")
 ```
 
 ## Usage
@@ -38,7 +44,7 @@ cran_downloads()
 ```
 
     #>         date count
-    #> 1 2019-04-09     0
+    #> 1 2019-04-11     0
 
 The last week, or the last month can be also easily queried:
 
@@ -47,13 +53,13 @@ cran_downloads(when = "last-week")
 ```
 
     #>         date   count
-    #> 1 2019-04-01 3209146
-    #> 2 2019-04-02 3579518
-    #> 3 2019-04-03 3561940
-    #> 4 2019-04-04 3356194
-    #> 5 2019-04-05 2916302
-    #> 6 2019-04-06 1686660
-    #> 7 2019-04-07 1650173
+    #> 1 2019-04-03 3561940
+    #> 2 2019-04-04 3356194
+    #> 3 2019-04-05 2916302
+    #> 4 2019-04-06 1686660
+    #> 5 2019-04-07 1650173
+    #> 6 2019-04-08 3369344
+    #> 7 2019-04-09 3509140
 
 The `package` argument queries a specific package:
 
@@ -62,20 +68,20 @@ cran_downloads(when = "last-week", package = c("magrittr", "dplyr"))
 ```
 
     #>          date count  package
-    #> 1  2019-04-01 22321 magrittr
-    #> 2  2019-04-02 23823 magrittr
-    #> 3  2019-04-03 24362 magrittr
-    #> 4  2019-04-04 23068 magrittr
-    #> 5  2019-04-05 19868 magrittr
-    #> 6  2019-04-06  9830 magrittr
-    #> 7  2019-04-07  9834 magrittr
-    #> 8  2019-04-01 31356    dplyr
-    #> 9  2019-04-02 33300    dplyr
-    #> 10 2019-04-03 34602    dplyr
-    #> 11 2019-04-04 33678    dplyr
-    #> 12 2019-04-05 30217    dplyr
-    #> 13 2019-04-06 17107    dplyr
-    #> 14 2019-04-07 17541    dplyr
+    #> 1  2019-04-03 24362 magrittr
+    #> 2  2019-04-04 23068 magrittr
+    #> 3  2019-04-05 19868 magrittr
+    #> 4  2019-04-06  9830 magrittr
+    #> 5  2019-04-07  9834 magrittr
+    #> 6  2019-04-08 22549 magrittr
+    #> 7  2019-04-09 24774 magrittr
+    #> 8  2019-04-03 34602    dplyr
+    #> 9  2019-04-04 33678    dplyr
+    #> 10 2019-04-05 30217    dplyr
+    #> 11 2019-04-06 17107    dplyr
+    #> 12 2019-04-07 17541    dplyr
+    #> 13 2019-04-08 32777    dplyr
+    #> 14 2019-04-09 34267    dplyr
 
 Alternative intervals can also be specified:
 
@@ -134,19 +140,17 @@ Last day:
 cran_top_downloads()
 ```
 
-    #> No encoding supplied: defaulting to UTF-8.
-
     #>    rank    package count       from         to
-    #> 1     1      rlang 24883 2019-04-07 2019-04-07
-    #> 2     2 data.table 22283 2019-04-07 2019-04-07
-    #> 3     3    ggplot2 20784 2019-04-07 2019-04-07
-    #> 4     4       Rcpp 17880 2019-04-07 2019-04-07
-    #> 5     5      dplyr 17541 2019-04-07 2019-04-07
-    #> 6     6     tibble 15560 2019-04-07 2019-04-07
-    #> 7     7       glue 13333 2019-04-07 2019-04-07
-    #> 8     8   multcomp 13159 2019-04-07 2019-04-07
-    #> 9     9        cli 13097 2019-04-07 2019-04-07
-    #> 10   10     pillar 13033 2019-04-07 2019-04-07
+    #> 1     1      rlang 48277 2019-04-09 2019-04-09
+    #> 2     2       Rcpp 40549 2019-04-09 2019-04-09
+    #> 3     3    ggplot2 38956 2019-04-09 2019-04-09
+    #> 4     4   devtools 35528 2019-04-09 2019-04-09
+    #> 5     5      dplyr 34267 2019-04-09 2019-04-09
+    #> 6     6     tibble 34220 2019-04-09 2019-04-09
+    #> 7     7 data.table 32990 2019-04-09 2019-04-09
+    #> 8     8       glue 30676 2019-04-09 2019-04-09
+    #> 9     9        cli 30167 2019-04-09 2019-04-09
+    #> 10   10     pillar 28162 2019-04-09 2019-04-09
 
 Last week:
 
@@ -154,20 +158,18 @@ Last week:
 cran_top_downloads("last-week")
 ```
 
-    #> No encoding supplied: defaulting to UTF-8.
-
     #>    rank    package  count       from         to
-    #> 1     1      rlang 276709 2019-04-01 2019-04-07
-    #> 2     2       Rcpp 229191 2019-04-01 2019-04-07
-    #> 3     3      dplyr 197801 2019-04-01 2019-04-07
-    #> 4     4     tibble 197027 2019-04-01 2019-04-07
-    #> 5     5    ggplot2 184926 2019-04-01 2019-04-07
-    #> 6     6       glue 171706 2019-04-01 2019-04-07
-    #> 7     7 data.table 170497 2019-04-01 2019-04-07
-    #> 8     8        cli 169788 2019-04-01 2019-04-07
-    #> 9     9     pillar 161365 2019-04-01 2019-04-07
-    #> 10   10 assertthat 154957 2019-04-01 2019-04-07
+    #> 1     1      rlang 280296 2019-04-03 2019-04-09
+    #> 2     2       Rcpp 228031 2019-04-03 2019-04-09
+    #> 3     3    ggplot2 204579 2019-04-03 2019-04-09
+    #> 4     4      dplyr 200189 2019-04-03 2019-04-09
+    #> 5     5     tibble 196472 2019-04-03 2019-04-09
+    #> 6     6 data.table 186475 2019-04-03 2019-04-09
+    #> 7     7       glue 171998 2019-04-03 2019-04-09
+    #> 8     8        cli 169534 2019-04-03 2019-04-09
+    #> 9     9     pillar 161821 2019-04-03 2019-04-09
+    #> 10   10 assertthat 154795 2019-04-03 2019-04-09
 
 ## Raw JSON API
 
-See [here](https://github.com/metacran/cranlogs.app).
+See [here](https://github.com/r-hubs/cranlogs.app).

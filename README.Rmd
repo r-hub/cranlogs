@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 # Download logs from the RStudio CRAN mirror
 
-[![Linux Build Status](https://travis-ci.org/metacran/cranlogs.svg?branch=master)](https://travis-ci.org/metacran/cranlogs)
+[![Linux Build Status](https://travis-ci.org/r-hub/cranlogs.svg?branch=master)](https://travis-ci.org/r-hub/cranlogs)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/github/metacran/cranlogs?svg=true)](https://ci.appveyor.com/project/gaborcsardi/cranlogs)
 [![CRAN version](http://www.r-pkg.org/badges/version/cranlogs)](http://www.r-pkg.org/pkg/cranlogs)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/cranlogs)](http://www.r-pkg.org/pkg/cranlogs)
@@ -28,11 +28,17 @@ numbers for each package.
 
 ## Installation
 
-You can install `cranlogs` from Github:
+You can install `cranlogs` from CRAN:
+
+```r
+install.packages("cranlogs"s)
+```
+
+Or get the development version from Github:
 
 ```{r eval = FALSE}
 # install.packages("remotes")
-remotes::install_github("metacran/cranlogs")
+remotes::install_github("r-hub/cranlogs")
 ```
 
 ## Usage
@@ -85,4 +91,4 @@ cran_top_downloads("last-week")
 
 ## Raw JSON API
 
-See [here](https://github.com/metacran/cranlogs.app).
+See [here](https://github.com/r-hubs/cranlogs.app).

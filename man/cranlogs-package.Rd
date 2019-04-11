@@ -8,13 +8,14 @@
 \description{
 'API' to the database of 'CRAN' package downloads from the
     'RStudio' 'CRAN mirror'. The database itself is at <http://cranlogs.r-pkg.org>,
-    see <https://github.com/metacran/cranlogs.app> for the raw 'API'.
+    see <https://github.com/r-hub/cranlogs.app> for the raw 'API'.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/metacran/cranlogs}
-  \item Report bugs at \url{https://github.com/metacran/cranlogs/issues}
+  \item \url{https://github.com/r-hub/cranlogs}
+  \item \url{https://r-hub.github.io/cranlogs}
+  \item Report bugs at \url{https://github.com/r-hub/cranlogs/issues}
 }
 
 }
