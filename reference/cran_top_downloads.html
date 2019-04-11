@@ -150,7 +150,7 @@ future.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Default is last day</span>
+    <pre class="examples"><div class='input'><span class='co'>## Default is last day for which data is available.</span>
 <span class='fu'>cran_top_downloads</span>()</div><div class='output co'>#&gt;    rank    package count       from         to
 #&gt; 1     1      rlang 48277 2019-04-09 2019-04-09
 #&gt; 2     2       Rcpp 40549 2019-04-09 2019-04-09
@@ -162,7 +162,8 @@ future.</p></td>
 #&gt; 8     8       glue 30676 2019-04-09 2019-04-09
 #&gt; 9     9        cli 30167 2019-04-09 2019-04-09
 #&gt; 10   10     pillar 28162 2019-04-09 2019-04-09</div><div class='input'>
-<span class='co'>## Last week instead</span>
+<span class='co'>## Last week (6 days prior to the last day for which data is available) </span>
+<span class='co'>## instead</span>
 <span class='fu'>cran_top_downloads</span>(<span class='kw'>when</span> <span class='kw'>=</span> <span class='st'>"last-week"</span>)</div><div class='output co'>#&gt;    rank    package  count       from         to
 #&gt; 1     1      rlang 280296 2019-04-03 2019-04-09
 #&gt; 2     2       Rcpp 228031 2019-04-03 2019-04-09
