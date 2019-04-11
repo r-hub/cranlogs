@@ -18,7 +18,7 @@ CRAN package mirror daily at <http://cran-logs.rstudio.com>.
 This R package queries a database that contains the daily download
 numbers for each package.
 
-TThe RStudio CRAN mirror is not the only CRAN mirror, but it’s a popular
+The RStudio CRAN mirror is not the only CRAN mirror, but it’s a popular
 one: it’s the default choice for RStudio users. The actual number of
 downloads over all CRAN mirrors is unknown.
 
