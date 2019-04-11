@@ -26,6 +26,9 @@ Top downloaded packages from the RStudio CRAN mirror
 \code{last-day} is the last day for which data is available,
  \code{last-week} is from 6 days prior to that last day with data, 
  \code{last-month} is from 29 days prior to that last day with data.
+ 
+ 0 counts can be due to the non-availability of data on the RStudio server 
+ for that day.
 }
 \examples{
 \dontrun{

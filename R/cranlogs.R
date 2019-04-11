@@ -31,6 +31,9 @@ top_url   <- paste0(base_url, "top/")
 #' @details \code{last-day} is the last day for which data is available,
 #'  \code{last-week} is from 6 days prior to that last day with data, 
 #'  \code{last-month} is from 29 days prior to that last day with data.
+#'  
+#'  0 counts can be due to the non-availability of data on the RStudio server 
+#'  for that day.
 #' @family CRAN downloads
 #' @export
 #' @examples
@@ -174,6 +177,9 @@ fill_in_dates <- function(df, start, end) {
 #' @details \code{last-day} is the last day for which data is available,
 #'  \code{last-week} is from 6 days prior to that last day with data, 
 #'  \code{last-month} is from 29 days prior to that last day with data.
+#'  
+#'  0 counts can be due to the non-availability of data on the RStudio server 
+#'  for that day.
 
 cran_top_downloads <- function(when = c("last-day", "last-week",
                                  "last-month"), count = 10) {
