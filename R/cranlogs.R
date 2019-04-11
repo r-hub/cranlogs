@@ -13,8 +13,8 @@ top_url   <- paste0(base_url, "top/")
 #'   or \code{NULL} for a sum of downloads for all packages.
 #'   Alternatively, it can also be \code{"R"}, to query downloads
 #'   of R itself. \code{"R"} cannot be mixed with packages.
-#' @param when \code{last-day}, \code{last-week} or \code{last-month}.
-#'   If this is given, then \code{from} and \code{to} are ignored.
+#' @param when \code{last-day}, \code{last-week} or \code{last-month} (see 
+#' details). If this is given, then \code{from} and \code{to} are ignored.
 #' @param from Start date, in \code{yyyy-mm-dd} format, or
 #'   \code{last-day}. It is ignored if \code{when} is given.
 #' @param to End date, in \code{yyyy-mm-dd} format, or
@@ -150,7 +150,8 @@ fill_in_dates <- function(df, start, end) {
 
 #' Top downloaded packages from the RStudio CRAN mirror
 #'
-#' @param when \code{last-day}, \code{last-week} or \code{last-month}.
+#' @param when \code{last-day}, \code{last-week} or \code{last-month} (see 
+#' details).
 #' @param count Number of packages to list. Note that the DB server
 #'   lists only at most 100 packages. This number might change in the
 #'   future.

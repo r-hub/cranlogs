@@ -13,8 +13,8 @@ or \code{NULL} for a sum of downloads for all packages.
 Alternatively, it can also be \code{"R"}, to query downloads
 of R itself. \code{"R"} cannot be mixed with packages.}
 
-\item{when}{\code{last-day}, \code{last-week} or \code{last-month}.
-If this is given, then \code{from} and \code{to} are ignored.}
+\item{when}{\code{last-day}, \code{last-week} or \code{last-month} (see 
+details). If this is given, then \code{from} and \code{to} are ignored.}
 
 \item{from}{Start date, in \code{yyyy-mm-dd} format, or
 \code{last-day}. It is ignored if \code{when} is given.}
