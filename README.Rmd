@@ -1,3 +1,10 @@
+---
+output:
+  github_document:
+    html_preview: false
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, setup, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(
@@ -24,8 +31,8 @@ numbers for each package.
 You can install `cranlogs` from Github:
 
 ```{r eval = FALSE}
-library(devtools)
-install_github("metacran/cranlogs")
+# install.packages("remotes")
+remotes::install_github("metacran/cranlogs")
 ```
 
 ## Usage

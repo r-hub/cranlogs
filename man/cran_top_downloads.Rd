@@ -31,6 +31,6 @@ cran_top_downloads(when = "last-week")
 }
 }
 \seealso{
-Other CRAN.downloads: \code{\link{cran_downloads}}
+Other CRAN downloads: \code{\link{cran_downloads}}
 }
-
+\concept{CRAN downloads}

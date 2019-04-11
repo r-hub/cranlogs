@@ -1,7 +1,9 @@
 ^tags$
-^inst/README.Rmd$
+^README.Rmd$
 ^Makefile$
 ^.travis.yml$
 ^appveyor.yml$
 ^README.md$
 ^NEWS.md$
+^.*\.Rproj$
+^\.Rproj\.user$
