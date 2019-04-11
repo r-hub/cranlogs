@@ -35,13 +35,14 @@ top_url   <- paste0(base_url, "top/")
 #' @export
 #' @examples
 #' \dontrun{
-#' ## All downloads yesterday
+#' ## Default is last day for which data is available.
 #' cran_downloads()
 #'
-#' ## All downloads for 'dplyr' yesterday
+#' ## All downloads for 'dplyr' in the last day for which data is available.
 #' cran_downloads(packages = "dplyr")
 #'
 #' ## Daily downloads for 'igraph' last week
+#' ## (6 days prior to the last day for which data is available)
 #' cran_downloads(packages = "igraph", when = "last-week")
 #'
 #' ## Downloads in the specified time interval
@@ -162,10 +163,11 @@ fill_in_dates <- function(df, start, end) {
 #' @export
 #' @examples
 #' \dontrun{
-#' ## Default is last day
+#' ## Default is last day for which data is available.
 #' cran_top_downloads()
 #'
-#' ## Last week instead
+#' ## Last week (6 days prior to the last day for which data is available) 
+#' ## instead
 #' cran_top_downloads(when = "last-week")
 #' }
 #' 

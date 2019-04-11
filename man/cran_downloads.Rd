@@ -42,13 +42,14 @@ Daily package downloads from the RStudio CRAN mirror
 }
 \examples{
 \dontrun{
-## All downloads yesterday
+## Default is last day for which data is available.
 cran_downloads()
 
-## All downloads for 'dplyr' yesterday
+## All downloads for 'dplyr' in the last day for which data is available.
 cran_downloads(packages = "dplyr")
 
 ## Daily downloads for 'igraph' last week
+## (6 days prior to the last day for which data is available)
 cran_downloads(packages = "igraph", when = "last-week")
 
 ## Downloads in the specified time interval

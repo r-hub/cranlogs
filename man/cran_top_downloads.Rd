@@ -29,10 +29,11 @@ Top downloaded packages from the RStudio CRAN mirror
 }
 \examples{
 \dontrun{
-## Default is last day
+## Default is last day for which data is available.
 cran_top_downloads()
 
-## Last week instead
+## Last week (6 days prior to the last day for which data is available) 
+## instead
 cran_top_downloads(when = "last-week")
 }
 
