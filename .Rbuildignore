@@ -7,3 +7,4 @@
 ^NEWS.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^_pkgdown\.yml$
