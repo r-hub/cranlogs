@@ -23,7 +23,7 @@ numbers for each package.
 You can install `cranlogs` from CRAN:
 
 ``` r
-install.packages("cranlogs"s)
+install.packages("cranlogs")
 ```
 
 Or get the development version from Github:
@@ -36,17 +36,19 @@ remotes::install_github("r-hub/cranlogs")
 ## Usage
 
 It has a very simple API. By default it shows the total number of
-package downloads from the previous day.
+package downloads from the last day for which data is available.
 
 ``` r
 library(cranlogs)
 cran_downloads()
 ```
 
-    #>         date count
-    #> 1 2019-04-11     0
+    #>         date   count
+    #> 1 2019-04-09 3509140
 
-The last week, or the last month can be also easily queried:
+The last week (6 days prior to the last day for which data is
+available), or the last month (29 days prior to the last day for which
+data is available) can be also easily queried:
 
 ``` r
 cran_downloads(when = "last-week")
@@ -129,12 +131,103 @@ For downloads of R itself, give `"R"` instead of a package:
 cran_downloads("R")
 ```
 
-    #> [1] date    version os      count  
-    #> <0 rows> (or 0-length row.names)
+    #>          date      version  os count
+    #> 1  2019-04-09       latest  NA    10
+    #> 2  2019-04-09       2.10.0 osx     3
+    #> 3  2019-04-09       2.10.1 osx     4
+    #> 4  2019-04-09       2.11.0 osx     4
+    #> 5  2019-04-09       2.11.1 osx     3
+    #> 6  2019-04-09       2.12.0 osx     4
+    #> 7  2019-04-09       2.12.1 osx     4
+    #> 8  2019-04-09       2.12.2 osx     3
+    #> 9  2019-04-09       2.13.0 osx     3
+    #> 10 2019-04-09       2.13.1 osx     2
+    #> 11 2019-04-09       2.13.2 osx     1
+    #> 12 2019-04-09       2.14.0 osx     1
+    #> 13 2019-04-09       2.14.1 osx     2
+    #> 14 2019-04-09       2.14.2 osx     2
+    #> 15 2019-04-09       2.15.0 osx     2
+    #> 16 2019-04-09       2.15.1 osx     4
+    #> 17 2019-04-09       2.15.2 osx     3
+    #> 18 2019-04-09       2.15.3 osx     3
+    #> 19 2019-04-09        3.0.0 osx     4
+    #> 20 2019-04-09        3.0.1 osx     3
+    #> 21 2019-04-09        3.0.2 osx     2
+    #> 22 2019-04-09        3.0.3 osx     2
+    #> 23 2019-04-09        3.1.0 osx     6
+    #> 24 2019-04-09        3.1.1 osx     2
+    #> 25 2019-04-09        3.1.2 osx     5
+    #> 26 2019-04-09        3.1.3 osx     4
+    #> 27 2019-04-09        3.2.0 osx     2
+    #> 28 2019-04-09        3.2.1 osx    12
+    #> 29 2019-04-09        3.2.2 osx     2
+    #> 30 2019-04-09        3.2.3 osx     1
+    #> 31 2019-04-09        3.2.4 osx    18
+    #> 32 2019-04-09        3.3.0 osx     1
+    #> 33 2019-04-09        3.3.1 osx     2
+    #> 34 2019-04-09        3.3.2 osx     2
+    #> 35 2019-04-09        3.3.3 osx    58
+    #> 36 2019-04-09        3.4.0 osx     7
+    #> 37 2019-04-09        3.4.1 osx     5
+    #> 38 2019-04-09        3.4.2 osx     2
+    #> 39 2019-04-09        3.4.3 osx     3
+    #> 40 2019-04-09        3.4.4 osx    77
+    #> 41 2019-04-09        3.5.0 osx     3
+    #> 42 2019-04-09        3.5.1 osx     5
+    #> 43 2019-04-09        3.5.2 osx     8
+    #> 44 2019-04-09        3.5.3 osx   732
+    #> 45 2019-04-09       latest osx   475
+    #> 46 2019-04-09       2.15.0 src     1
+    #> 47 2019-04-09       2.15.2 src     2
+    #> 48 2019-04-09        3.0.0 src     1
+    #> 49 2019-04-09        3.0.3 src     3
+    #> 50 2019-04-09        3.2.2 src    13
+    #> 51 2019-04-09        3.2.3 src     1
+    #> 52 2019-04-09        3.2.5 src     1
+    #> 53 2019-04-09        3.3.0 src     1
+    #> 54 2019-04-09        3.3.2 src     1
+    #> 55 2019-04-09        3.3.3 src    58
+    #> 56 2019-04-09        3.4.0 src     2
+    #> 57 2019-04-09        3.4.1 src    11
+    #> 58 2019-04-09        3.4.2 src     4
+    #> 59 2019-04-09        3.4.3 src     4
+    #> 60 2019-04-09        3.4.4 src     3
+    #> 61 2019-04-09        3.5.0 src     3
+    #> 62 2019-04-09        3.5.1 src    30
+    #> 63 2019-04-09        3.5.2 src    10
+    #> 64 2019-04-09        3.5.3 src   143
+    #> 65 2019-04-09       latest src     3
+    #> 66 2019-04-09       2.13.1 win     1
+    #> 67 2019-04-09       2.13.2 win     1
+    #> 68 2019-04-09       2.15.1 win     1
+    #> 69 2019-04-09        3.0.0 win     1
+    #> 70 2019-04-09        3.0.1 win     1
+    #> 71 2019-04-09        3.0.2 win     1
+    #> 72 2019-04-09        3.0.3 win     2
+    #> 73 2019-04-09        3.1.0 win     3
+    #> 74 2019-04-09        3.1.1 win     1
+    #> 75 2019-04-09        3.1.3 win     1
+    #> 76 2019-04-09        3.2.0 win     1
+    #> 77 2019-04-09        3.2.1 win     6
+    #> 78 2019-04-09        3.2.5 win     9
+    #> 79 2019-04-09        3.3.0 win     2
+    #> 80 2019-04-09        3.3.1 win     1
+    #> 81 2019-04-09        3.3.2 win     1
+    #> 82 2019-04-09        3.3.3 win    41
+    #> 83 2019-04-09        3.4.2 win     2
+    #> 84 2019-04-09        3.4.3 win    19
+    #> 85 2019-04-09        3.4.4 win    46
+    #> 86 2019-04-09        3.5.0 win    27
+    #> 87 2019-04-09        3.5.1 win     4
+    #> 88 2019-04-09        3.5.2 win     1
+    #> 89 2019-04-09        3.5.3 win  4168
+    #> 90 2019-04-09 3.5.3patched win   464
+    #> 91 2019-04-09   3.6.0alpha win     1
+    #> 92 2019-04-09        devel win    83
 
 ## Top downloaded packages
 
-Last day:
+Last day for which data is available:
 
 ``` r
 cran_top_downloads()
@@ -152,7 +245,7 @@ cran_top_downloads()
     #> 9     9        cli 30167 2019-04-09 2019-04-09
     #> 10   10     pillar 28162 2019-04-09 2019-04-09
 
-Last week:
+Last week (6 days prior to the last day for which data is available):
 
 ``` r
 cran_top_downloads("last-week")

@@ -31,7 +31,7 @@ numbers for each package.
 You can install `cranlogs` from CRAN:
 
 ```r
-install.packages("cranlogs"s)
+install.packages("cranlogs")
 ```
 
 Or get the development version from Github:
@@ -44,14 +44,14 @@ remotes::install_github("r-hub/cranlogs")
 ## Usage
 
 It has a very simple API. By default it shows the total number of
-package downloads from the previous day.
+package downloads from the last day for which data is available.
 
 ```{r}
 library(cranlogs)
 cran_downloads()
 ```
 
-The last week, or the last month can be also easily queried:
+The last week (6 days prior to the last day for which data is available), or the last month (29 days prior to the last day for which data is available) can be also easily queried:
 
 ```{r}
 cran_downloads(when = "last-week")
@@ -77,13 +77,13 @@ cran_downloads("R")
 
 ## Top downloaded packages
 
-Last day:
+Last day for which data is available:
 
 ```{r}
 cran_top_downloads()
 ```
 
-Last week:
+Last week (6 days prior to the last day for which data is available):
 
 ```{r}
 cran_top_downloads("last-week")
