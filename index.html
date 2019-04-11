@@ -85,7 +85,7 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install <code>cranlogs</code> from CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"cranlogs"</span>s)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"cranlogs"</span>)</a></code></pre></div>
 <p>Or get the development version from Github:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"r-hub/cranlogs"</span>)</a></code></pre></div>
@@ -93,12 +93,12 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>It has a very simple API. By default it shows the total number of package downloads from the previous day.</p>
+<p>It has a very simple API. By default it shows the total number of package downloads from the last day for which data is available.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(cranlogs)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="reference/cran_downloads.html">cran_downloads</a></span>()</a></code></pre></div>
 <pre><code>#&gt;         date   count
 #&gt; 1 2019-04-09 3509140</code></pre>
-<p>The last week, or the last month can be also easily queried:</p>
+<p>The last week (6 days prior to the last day for which data is available), or the last month (29 days prior to the last day for which data is available) can be also easily queried:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="reference/cran_downloads.html">cran_downloads</a></span>(<span class="dt">when =</span> <span class="st">"last-week"</span>)</a></code></pre></div>
 <pre><code>#&gt;         date   count
 #&gt; 1 2019-04-03 3561940
@@ -259,7 +259,7 @@
 <div id="top-downloaded-packages" class="section level2">
 <h2 class="hasAnchor">
 <a href="#top-downloaded-packages" class="anchor"></a>Top downloaded packages</h2>
-<p>Last day:</p>
+<p>Last day for which data is available:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="reference/cran_top_downloads.html">cran_top_downloads</a></span>()</a></code></pre></div>
 <pre><code>#&gt;    rank    package count       from         to
 #&gt; 1     1      rlang 48277 2019-04-09 2019-04-09
@@ -272,7 +272,7 @@
 #&gt; 8     8       glue 30676 2019-04-09 2019-04-09
 #&gt; 9     9        cli 30167 2019-04-09 2019-04-09
 #&gt; 10   10     pillar 28162 2019-04-09 2019-04-09</code></pre>
-<p>Last week:</p>
+<p>Last week (6 days prior to the last day for which data is available):</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="reference/cran_top_downloads.html">cran_top_downloads</a></span>(<span class="st">"last-week"</span>)</a></code></pre></div>
 <pre><code>#&gt;    rank    package  count       from         to
 #&gt; 1     1      rlang 280296 2019-04-03 2019-04-09
