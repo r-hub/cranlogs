@@ -21,6 +21,11 @@ A data frame with columns: \code{rank}, \code{package},
 \description{
 Top downloaded packages from the RStudio CRAN mirror
 }
+\details{
+\code{last-day} is the last day for which data is available,
+ \code{last-week} is from 6 days prior to that last day with data, 
+ \code{last-month} is from 29 days prior to that last day with data.
+}
 \examples{
 \dontrun{
 ## Default is last day
@@ -29,6 +34,7 @@ cran_top_downloads()
 ## Last week instead
 cran_top_downloads(when = "last-week")
 }
+
 }
 \seealso{
 Other CRAN downloads: \code{\link{cran_downloads}}
