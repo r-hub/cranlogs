@@ -94,4 +94,4 @@ cran_top_downloads("last-week")
 
 ## Raw JSON API
 
-See [here](https://github.com/r-hubs/cranlogs.app).
+See [the GitHub repo of the API of the CRAN downloads database](https://github.com/r-hub/cranlogs.app).
