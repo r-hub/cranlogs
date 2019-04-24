@@ -9,4 +9,5 @@ reference:
   contents:
   - '`cran_downloads`'
   - '`cran_top_downloads`'
+  - '`cranlogs_badge`'
   
