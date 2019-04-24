@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Top downloaded packages from the RStudio CRAN mirror — cran_top_downloads • cranlogs</title>
+<title>Create Markdown code for a cranlogs badge — cranlogs_badge • cranlogs</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -31,9 +31,9 @@
 
 
 
-<meta property="og:title" content="Top downloaded packages from the RStudio CRAN mirror — cran_top_downloads" />
+<meta property="og:title" content="Create Markdown code for a cranlogs badge — cranlogs_badge" />
 
-<meta property="og:description" content="Top downloaded packages from the RStudio CRAN mirror" />
+<meta property="og:description" content="Create Markdown code for a cranlogs badge" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -103,81 +103,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Top downloaded packages from the RStudio CRAN mirror</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-hub/cranlogs/blob/master/R/cranlogs.R'><code>R/cranlogs.R</code></a></small>
-    <div class="hidden name"><code>cran_top_downloads.Rd</code></div>
+    <h1>Create Markdown code for a cranlogs badge</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-hub/cranlogs/blob/master/R/badge.R'><code>R/badge.R</code></a></small>
+    <div class="hidden name"><code>cranlogs_badge.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Top downloaded packages from the RStudio CRAN mirror</p>
+    <p>Create Markdown code for a cranlogs badge</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>cran_top_downloads</span>(<span class='kw'>when</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"last-day"</span>, <span class='st'>"last-week"</span>, <span class='st'>"last-month"</span>),
-  <span class='kw'>count</span> <span class='kw'>=</span> <span class='fl'>10</span>)</pre>
+    <pre class="usage"><span class='fu'>cranlogs_badge</span>(<span class='no'>package_name</span>, <span class='kw'>summary</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"last-month"</span>, <span class='st'>"last-day"</span>,
+  <span class='st'>"last-week"</span>, <span class='st'>"grand-total"</span>), <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"blue"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>when</th>
-      <td><p><code>last-day</code>, <code>last-week</code> or <code>last-month</code> (see 
-details).</p></td>
+      <th>package_name</th>
+      <td><p>name of the package</p></td>
     </tr>
     <tr>
-      <th>count</th>
-      <td><p>Number of packages to list. Note that the DB server
-lists only at most 100 packages. This number might change in the
-future.</p></td>
+      <th>summary</th>
+      <td><p>One of "last-day", "last-week", "last-month", "grand-total".</p></td>
+    </tr>
+    <tr>
+      <th>color</th>
+      <td><p>Either a hex color code or one of "brightgreen", "green", "yellowgreen",
+"yellow", "orange", "red", "lightgrey", "blue".</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame with columns: <code>rank</code>, <code>package</code>,
-  <code>count</code>, <code>from</code>, <code>to</code>.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p><code>last-day</code> is the last day for which data is available,
- <code>last-week</code> is from 6 days prior to that last day with data, 
- <code>last-month</code> is from 29 days prior to that last day with data.</p> 
-<p>0 counts can be due to the non-availability of data on the RStudio server 
- for that day.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other CRAN downloads: <code><a href='cran_downloads.html'>cran_downloads</a></code></p></div>
+    <p>The string to be copy-pasted to the README source.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Default is last day for which data is available.</span>
-<span class='fu'>cran_top_downloads</span>()</div><div class='output co'>#&gt;    rank    package count       from         to
-#&gt; 1     1   devtools 33742 2019-04-22 2019-04-22
-#&gt; 2     2      rlang 30138 2019-04-22 2019-04-22
-#&gt; 3     3      dplyr 26176 2019-04-22 2019-04-22
-#&gt; 4     4       Rcpp 26020 2019-04-22 2019-04-22
-#&gt; 5     5    ggplot2 25061 2019-04-22 2019-04-22
-#&gt; 6     6     tibble 23334 2019-04-22 2019-04-22
-#&gt; 7     7 data.table 20652 2019-04-22 2019-04-22
-#&gt; 8     8       glue 20001 2019-04-22 2019-04-22
-#&gt; 9     9  base64enc 19975 2019-04-22 2019-04-22
-#&gt; 10   10        cli 19793 2019-04-22 2019-04-22</div><div class='input'>
-<span class='co'>## Last week (6 days prior to the last day for which data is available) </span>
-<span class='co'>## instead</span>
-<span class='fu'>cran_top_downloads</span>(<span class='kw'>when</span> <span class='kw'>=</span> <span class='st'>"last-week"</span>)</div><div class='output co'>#&gt;    rank    package  count       from         to
-#&gt; 1     1   devtools 241692 2019-04-16 2019-04-22
-#&gt; 2     2      rlang 203625 2019-04-16 2019-04-22
-#&gt; 3     3       Rcpp 180024 2019-04-16 2019-04-22
-#&gt; 4     4      dplyr 172408 2019-04-16 2019-04-22
-#&gt; 5     5    ggplot2 171557 2019-04-16 2019-04-22
-#&gt; 6     6 data.table 156713 2019-04-16 2019-04-22
-#&gt; 7     7     tibble 153912 2019-04-16 2019-04-22
-#&gt; 8     8       glue 132732 2019-04-16 2019-04-22
-#&gt; 9     9        cli 131482 2019-04-16 2019-04-22
-#&gt; 10   10        RIA 130419 2019-04-16 2019-04-22</div><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>cranlogs_badge</span>(<span class='st'>"praise"</span>)</div><div class='output co'>#&gt; [1] "[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/last-month/praise?color=blue)](https://r-pkg.org/pkg/praise)"</div><div class='input'><span class='fu'>cranlogs_badge</span>(<span class='st'>"praise"</span>, <span class='kw'>summary</span> <span class='kw'>=</span> <span class='st'>"grand-total"</span>)</div><div class='output co'>#&gt; [1] "[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/praise?color=blue)](https://r-pkg.org/pkg/praise)"</div><div class='input'><span class='fu'>cranlogs_badge</span>(<span class='st'>"praise"</span>, <span class='kw'>summary</span> <span class='kw'>=</span> <span class='st'>"last-week"</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"orange"</span>)</div><div class='output co'>#&gt; [1] "[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/last-week/praise?color=orange)](https://r-pkg.org/pkg/praise)"</div><div class='input'><span class='fu'>cranlogs_badge</span>(<span class='st'>"praise"</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"ff8c69"</span>)</div><div class='output co'>#&gt; [1] "[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/last-month/praise?color=ff8c69)](https://r-pkg.org/pkg/praise)"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -185,10 +149,6 @@ future.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
