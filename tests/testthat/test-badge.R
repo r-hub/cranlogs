@@ -10,5 +10,5 @@ test_that("cranlogs_badge works", {
 test_that("parameter checks", {
   expect_error(cranlogs_badge(), "no default")
   expect_error(cranlogs_badge("praise", summary = "all"),
-               'cranlogs_badge(summary = "all")')
+               'should be one')
 })

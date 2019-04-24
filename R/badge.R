@@ -14,14 +14,11 @@
 #' cranlogs_badge("praise", summary = "last-week", color = "orange")
 #' cranlogs_badge("praise", color = "ff8c69")
 cranlogs_badge <- function(package_name, 
-                         summary = "last-month",
+                           summary = c("last-month", "last-day", 
+                                       "last-week", "grand-total"),
                          color = "blue"){
   
-  if (!summary %in% c("last-day", "last-week", "last-month",
-                      "grand-total")){
-    stop(paste0('summary must be one of "last-day", ',
-    '"last-week", "last-month", "grand-total".'))
-  }
+  summary <- match.arg(summary)
   
   url <- paste0("http://cranlogs.r-pkg.org/badges/",
                summary, "/",
