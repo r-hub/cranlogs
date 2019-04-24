@@ -20,11 +20,14 @@ cranlogs_badge <- function(package_name,
   
   summary <- match.arg(summary)
   
-  url <- paste0("http://cranlogs.r-pkg.org/badges/",
+  pkg_url <- paste0("https://r-pkg.org/pkg/", package_name)
+  
+  badge_url <- paste0("https://cranlogs.r-pkg.org/badges/",
                summary, "/",
                package_name, 
                "?color=", color)
   
   paste0("[![CRAN RStudio mirror downloads](",
-         url, ")](", url, ")")
+         badge_url, ")](", pkg_url, ")")
+  
 }
