@@ -172,20 +172,20 @@ details). If this is given, then <code>from</code> and <code>to</code> are ignor
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Default is last day for which data is available.</span>
 <span class='fu'>cran_downloads</span>()</div><div class='output co'>#&gt;         date   count
-#&gt; 1 2019-04-22 2519866</div><div class='input'>
+#&gt; 1 2019-04-23 3075545</div><div class='input'>
 <span class='co'>## All downloads for 'dplyr' in the last day for which data is available.</span>
 <span class='fu'>cran_downloads</span>(<span class='kw'>packages</span> <span class='kw'>=</span> <span class='st'>"dplyr"</span>)</div><div class='output co'>#&gt;         date count package
-#&gt; 1 2019-04-22 26176   dplyr</div><div class='input'>
+#&gt; 1 2019-04-23 31885   dplyr</div><div class='input'>
 <span class='co'>## Daily downloads for 'igraph' last week</span>
 <span class='co'>## (6 days prior to the last day for which data is available)</span>
 <span class='fu'>cran_downloads</span>(<span class='kw'>packages</span> <span class='kw'>=</span> <span class='st'>"igraph"</span>, <span class='kw'>when</span> <span class='kw'>=</span> <span class='st'>"last-week"</span>)</div><div class='output co'>#&gt;         date count package
-#&gt; 1 2019-04-16 15417  igraph
-#&gt; 2 2019-04-17 15488  igraph
-#&gt; 3 2019-04-18 14451  igraph
-#&gt; 4 2019-04-19 13339  igraph
-#&gt; 5 2019-04-20 11224  igraph
-#&gt; 6 2019-04-21  9223  igraph
-#&gt; 7 2019-04-22 16635  igraph</div><div class='input'>
+#&gt; 1 2019-04-17 15488  igraph
+#&gt; 2 2019-04-18 14451  igraph
+#&gt; 3 2019-04-19 13339  igraph
+#&gt; 4 2019-04-20 11224  igraph
+#&gt; 5 2019-04-21  9223  igraph
+#&gt; 6 2019-04-22 16635  igraph
+#&gt; 7 2019-04-23 20058  igraph</div><div class='input'>
 <span class='co'>## Downloads in the specified time interval</span>
 <span class='fu'>cran_downloads</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"2014-06-30"</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='st'>"2014-08-08"</span>)</div><div class='output co'>#&gt;          date  count
 #&gt; 1  2014-06-30 211630
@@ -230,65 +230,79 @@ details). If this is given, then <code>from</code> and <code>to</code> are ignor
 #&gt; 40 2014-08-08 181458</div><div class='input'>
 <span class='co'>## Multiple packages</span>
 <span class='fu'>cran_downloads</span>(<span class='kw'>packages</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ggplot2"</span>, <span class='st'>"plyr"</span>, <span class='st'>"dplyr"</span>))</div><div class='output co'>#&gt;         date count package
-#&gt; 1 2019-04-22 25061 ggplot2
-#&gt; 2 2019-04-22 13858    plyr
-#&gt; 3 2019-04-22 26176   dplyr</div><div class='input'>
+#&gt; 1 2019-04-23 31446 ggplot2
+#&gt; 2 2019-04-23 17674    plyr
+#&gt; 3 2019-04-23 31885   dplyr</div><div class='input'>
 <span class='co'>## R downloads</span>
 <span class='fu'>cran_downloads</span>(<span class='st'>"R"</span>)</div><div class='output co'>#&gt;          date      version  os count
-#&gt; 1  2019-04-22       2.11.0 osx     2
-#&gt; 2  2019-04-22       2.12.1 osx     1
-#&gt; 3  2019-04-22       2.13.1 osx     1
-#&gt; 4  2019-04-22       2.14.2 osx     1
-#&gt; 5  2019-04-22       2.15.0 osx     1
-#&gt; 6  2019-04-22        3.0.3 osx     1
-#&gt; 7  2019-04-22        3.1.3 osx     1
-#&gt; 8  2019-04-22        3.2.1 osx     9
-#&gt; 9  2019-04-22        3.2.4 osx    40
-#&gt; 10 2019-04-22        3.3.0 osx     1
-#&gt; 11 2019-04-22        3.3.2 osx     1
-#&gt; 12 2019-04-22        3.3.3 osx    72
-#&gt; 13 2019-04-22        3.4.0 osx     4
-#&gt; 14 2019-04-22        3.4.1 osx     1
-#&gt; 15 2019-04-22        3.4.3 osx     1
-#&gt; 16 2019-04-22        3.4.4 osx    46
-#&gt; 17 2019-04-22        3.5.0 osx     1
-#&gt; 18 2019-04-22        3.5.1 osx     6
-#&gt; 19 2019-04-22        3.5.2 osx     4
-#&gt; 20 2019-04-22        3.5.3 osx   486
-#&gt; 21 2019-04-22       latest osx   207
-#&gt; 22 2019-04-22        2.8.1 src     1
-#&gt; 23 2019-04-22        3.0.3 src     1
-#&gt; 24 2019-04-22        3.1.0 src     1
-#&gt; 25 2019-04-22        3.1.2 src     2
-#&gt; 26 2019-04-22        3.1.3 src     1
-#&gt; 27 2019-04-22        3.2.3 src     1
-#&gt; 28 2019-04-22        3.2.4 src     1
-#&gt; 29 2019-04-22        3.3.0 src     2
-#&gt; 30 2019-04-22        3.3.1 src     1
-#&gt; 31 2019-04-22        3.4.1 src    10
-#&gt; 32 2019-04-22        3.4.4 src     1
-#&gt; 33 2019-04-22        3.5.0 src     4
-#&gt; 34 2019-04-22        3.5.1 src    11
-#&gt; 35 2019-04-22        3.5.2 src     2
-#&gt; 36 2019-04-22        3.5.3 src    92
-#&gt; 37 2019-04-22       latest src     1
-#&gt; 38 2019-04-22        3.0.1 win     2
-#&gt; 39 2019-04-22        3.1.0 win     1
-#&gt; 40 2019-04-22        3.1.3 win     1
-#&gt; 41 2019-04-22        3.2.1 win    14
-#&gt; 42 2019-04-22        3.2.5 win    17
-#&gt; 43 2019-04-22        3.3.3 win    41
-#&gt; 44 2019-04-22        3.4.1 win     1
-#&gt; 45 2019-04-22        3.4.2 win     1
-#&gt; 46 2019-04-22        3.4.3 win    28
-#&gt; 47 2019-04-22        3.4.4 win    45
-#&gt; 48 2019-04-22        3.5.0 win     1
-#&gt; 49 2019-04-22        3.5.1 win     7
-#&gt; 50 2019-04-22        3.5.2 win     2
-#&gt; 51 2019-04-22        3.5.3 win  9515
-#&gt; 52 2019-04-22 3.5.3patched win   204
-#&gt; 53 2019-04-22      3.6.0rc win    28
-#&gt; 54 2019-04-22        devel win    81</div></pre>
+#&gt; 1  2019-04-23      3.6.0rc  NA     1
+#&gt; 2  2019-04-23        devel  NA     1
+#&gt; 3  2019-04-23       latest  NA     1
+#&gt; 4  2019-04-23       2.11.0 osx     1
+#&gt; 5  2019-04-23       2.11.1 osx     1
+#&gt; 6  2019-04-23       2.14.0 osx     1
+#&gt; 7  2019-04-23       2.15.0 osx     1
+#&gt; 8  2019-04-23       2.15.2 osx     2
+#&gt; 9  2019-04-23        3.0.0 osx     1
+#&gt; 10 2019-04-23        3.0.1 osx     1
+#&gt; 11 2019-04-23        3.0.3 osx     1
+#&gt; 12 2019-04-23        3.1.2 osx     2
+#&gt; 13 2019-04-23        3.1.3 osx     2
+#&gt; 14 2019-04-23        3.2.1 osx     5
+#&gt; 15 2019-04-23        3.2.4 osx    34
+#&gt; 16 2019-04-23        3.3.3 osx    91
+#&gt; 17 2019-04-23        3.4.0 osx     1
+#&gt; 18 2019-04-23        3.4.1 osx     2
+#&gt; 19 2019-04-23        3.4.3 osx     2
+#&gt; 20 2019-04-23        3.4.4 osx    77
+#&gt; 21 2019-04-23        3.5.0 osx     1
+#&gt; 22 2019-04-23        3.5.1 osx     2
+#&gt; 23 2019-04-23        3.5.2 osx    15
+#&gt; 24 2019-04-23        3.5.3 osx   709
+#&gt; 25 2019-04-23       latest osx   267
+#&gt; 26 2019-04-23       2.15.0 src     1
+#&gt; 27 2019-04-23        2.8.0 src     1
+#&gt; 28 2019-04-23        2.9.2 src     1
+#&gt; 29 2019-04-23        3.0.2 src     3
+#&gt; 30 2019-04-23        3.1.0 src     2
+#&gt; 31 2019-04-23        3.1.2 src     1
+#&gt; 32 2019-04-23        3.2.0 src     3
+#&gt; 33 2019-04-23        3.2.1 src     1
+#&gt; 34 2019-04-23        3.2.2 src     3
+#&gt; 35 2019-04-23        3.2.3 src     1
+#&gt; 36 2019-04-23        3.2.4 src     1
+#&gt; 37 2019-04-23        3.2.5 src     3
+#&gt; 38 2019-04-23        3.3.0 src     3
+#&gt; 39 2019-04-23        3.3.1 src     2
+#&gt; 40 2019-04-23        3.3.3 src     1
+#&gt; 41 2019-04-23        3.4.0 src     1
+#&gt; 42 2019-04-23        3.4.1 src     9
+#&gt; 43 2019-04-23        3.4.2 src     2
+#&gt; 44 2019-04-23        3.4.3 src     1
+#&gt; 45 2019-04-23        3.4.4 src     5
+#&gt; 46 2019-04-23        3.5.0 src     2
+#&gt; 47 2019-04-23        3.5.1 src    15
+#&gt; 48 2019-04-23        3.5.2 src     3
+#&gt; 49 2019-04-23        3.5.3 src   108
+#&gt; 50 2019-04-23       latest src     7
+#&gt; 51 2019-04-23       2.13.2 win     1
+#&gt; 52 2019-04-23       2.14.2 win     1
+#&gt; 53 2019-04-23        3.1.0 win     2
+#&gt; 54 2019-04-23        3.1.1 win     2
+#&gt; 55 2019-04-23        3.2.0 win     1
+#&gt; 56 2019-04-23        3.2.1 win    16
+#&gt; 57 2019-04-23        3.2.5 win     8
+#&gt; 58 2019-04-23        3.3.3 win    42
+#&gt; 59 2019-04-23        3.4.1 win     1
+#&gt; 60 2019-04-23        3.4.2 win     1
+#&gt; 61 2019-04-23        3.4.3 win    21
+#&gt; 62 2019-04-23        3.4.4 win    63
+#&gt; 63 2019-04-23        3.5.1 win     6
+#&gt; 64 2019-04-23        3.5.2 win     3
+#&gt; 65 2019-04-23        3.5.3 win  3666
+#&gt; 66 2019-04-23 3.5.3patched win   497
+#&gt; 67 2019-04-23      3.6.0rc win    18
+#&gt; 68 2019-04-23        devel win    89</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

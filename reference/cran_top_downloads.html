@@ -154,29 +154,29 @@ future.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Default is last day for which data is available.</span>
 <span class='fu'>cran_top_downloads</span>()</div><div class='output co'>#&gt;    rank    package count       from         to
-#&gt; 1     1   devtools 33742 2019-04-22 2019-04-22
-#&gt; 2     2      rlang 30138 2019-04-22 2019-04-22
-#&gt; 3     3      dplyr 26176 2019-04-22 2019-04-22
-#&gt; 4     4       Rcpp 26020 2019-04-22 2019-04-22
-#&gt; 5     5    ggplot2 25061 2019-04-22 2019-04-22
-#&gt; 6     6     tibble 23334 2019-04-22 2019-04-22
-#&gt; 7     7 data.table 20652 2019-04-22 2019-04-22
-#&gt; 8     8       glue 20001 2019-04-22 2019-04-22
-#&gt; 9     9  base64enc 19975 2019-04-22 2019-04-22
-#&gt; 10   10        cli 19793 2019-04-22 2019-04-22</div><div class='input'>
+#&gt; 1     1      rlang 38410 2019-04-23 2019-04-23
+#&gt; 2     2   devtools 36573 2019-04-23 2019-04-23
+#&gt; 3     3       Rcpp 36357 2019-04-23 2019-04-23
+#&gt; 4     4      dplyr 31885 2019-04-23 2019-04-23
+#&gt; 5     5    ggplot2 31446 2019-04-23 2019-04-23
+#&gt; 6     6     tibble 29470 2019-04-23 2019-04-23
+#&gt; 7     7 data.table 26979 2019-04-23 2019-04-23
+#&gt; 8     8       glue 25287 2019-04-23 2019-04-23
+#&gt; 9     9        cli 25226 2019-04-23 2019-04-23
+#&gt; 10   10     pillar 24934 2019-04-23 2019-04-23</div><div class='input'>
 <span class='co'>## Last week (6 days prior to the last day for which data is available) </span>
 <span class='co'>## instead</span>
 <span class='fu'>cran_top_downloads</span>(<span class='kw'>when</span> <span class='kw'>=</span> <span class='st'>"last-week"</span>)</div><div class='output co'>#&gt;    rank    package  count       from         to
-#&gt; 1     1   devtools 241692 2019-04-16 2019-04-22
-#&gt; 2     2      rlang 203625 2019-04-16 2019-04-22
-#&gt; 3     3       Rcpp 180024 2019-04-16 2019-04-22
-#&gt; 4     4      dplyr 172408 2019-04-16 2019-04-22
-#&gt; 5     5    ggplot2 171557 2019-04-16 2019-04-22
-#&gt; 6     6 data.table 156713 2019-04-16 2019-04-22
-#&gt; 7     7     tibble 153912 2019-04-16 2019-04-22
-#&gt; 8     8       glue 132732 2019-04-16 2019-04-22
-#&gt; 9     9        cli 131482 2019-04-16 2019-04-22
-#&gt; 10   10        RIA 130419 2019-04-16 2019-04-22</div><div class='input'>
+#&gt; 1     1   devtools 238134 2019-04-17 2019-04-23
+#&gt; 2     2      rlang 201976 2019-04-17 2019-04-23
+#&gt; 3     3       Rcpp 180467 2019-04-17 2019-04-23
+#&gt; 4     4      dplyr 172597 2019-04-17 2019-04-23
+#&gt; 5     5    ggplot2 170241 2019-04-17 2019-04-23
+#&gt; 6     6 data.table 155319 2019-04-17 2019-04-23
+#&gt; 7     7     tibble 153657 2019-04-17 2019-04-23
+#&gt; 8     8       glue 132247 2019-04-17 2019-04-23
+#&gt; 9     9        cli 131157 2019-04-17 2019-04-23
+#&gt; 10   10     pillar 129525 2019-04-17 2019-04-23</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
