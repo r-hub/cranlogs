@@ -1,6 +1,8 @@
 context("test-cran_downloads")
 
 test_that("cran_downloads works", {
+  skip_on_cran()
+  
   from <- as.Date("2019-02-23", format = "%Y-%m-%d")
   to <- as.Date("2019-04-24", format = "%Y-%m-%d")
   
