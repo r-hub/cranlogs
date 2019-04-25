@@ -9,3 +9,4 @@
 ^\.Rproj\.user$
 ^_pkgdown\.yml$
 ^revdep$
+^cran-comments.md$
