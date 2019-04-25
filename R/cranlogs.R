@@ -65,11 +65,11 @@ cran_downloads <- function(packages = NULL,
   if (!missing(when)) {
     interval <- match.arg(when)
   } else {
-    if (from != "last-day") {
+    if (as.character(from) != "last-day") {
       check_date(from)
     }
     
-    if (to != "last-day") {
+    if (as.character(to) != "last-day") {
       check_date(to)
     }
     
@@ -97,7 +97,6 @@ cran_downloads <- function(packages = NULL,
   if ("error" %in% names(r) && r$error == "Invalid query") {
     stop("Invalid query, probably invalid dates")
   }
-
   to_df(r, packages)
 
 }
