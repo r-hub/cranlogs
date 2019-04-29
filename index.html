@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Download Logs from the 'RStudio' 'CRAN' Mirror • cranlogs</title>
+<title>Download Logs from the RStudio CRAN Mirror • Download Logs from the RStudio CRAN Mirror</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Download Logs from the 'RStudio' 'CRAN' Mirror">
+<script src="pkgdown.js"></script><meta property="og:title" content="Download Logs from the RStudio CRAN Mirror">
 <meta property="og:description" content="'API' to the database of 'CRAN' package downloads from the
     'RStudio' 'CRAN mirror'. The database itself is at &lt;http://cranlogs.r-pkg.org&gt;,
     see &lt;https://github.com/r-hub/cranlogs.app&gt; for the raw 'API'.">
@@ -32,7 +32,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">cranlogs</a>
+        <a class="navbar-link" href="index.html">Download Logs from the RStudio CRAN Mirror</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.1</span>
       </span>
     </div>
@@ -98,34 +98,34 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(cranlogs)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="reference/cran_downloads.html">cran_downloads</a></span>()</a></code></pre></div>
 <pre><code>#&gt;         date   count
-#&gt; 1 2019-04-23 3075545</code></pre>
+#&gt; 1 2019-04-27 1854905</code></pre>
 <p>The last week (6 days prior to the last day for which data is available), or the last month (29 days prior to the last day for which data is available) can be also easily queried:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="reference/cran_downloads.html">cran_downloads</a></span>(<span class="dt">when =</span> <span class="st">"last-week"</span>)</a></code></pre></div>
 <pre><code>#&gt;         date   count
-#&gt; 1 2019-04-17 3463540
-#&gt; 2 2019-04-18 2899293
-#&gt; 3 2019-04-19 2307541
-#&gt; 4 2019-04-20 1523904
-#&gt; 5 2019-04-21 1457773
-#&gt; 6 2019-04-22 2519866
-#&gt; 7 2019-04-23 3075545</code></pre>
+#&gt; 1 2019-04-21 1457773
+#&gt; 2 2019-04-22 2519866
+#&gt; 3 2019-04-23 3075545
+#&gt; 4 2019-04-24 3292028
+#&gt; 5 2019-04-25 3193704
+#&gt; 6 2019-04-26 2868266
+#&gt; 7 2019-04-27 1854905</code></pre>
 <p>The <code>package</code> argument queries a specific package:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="reference/cran_downloads.html">cran_downloads</a></span>(<span class="dt">when =</span> <span class="st">"last-week"</span>, <span class="dt">package =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"magrittr"</span>, <span class="st">"dplyr"</span>))</a></code></pre></div>
 <pre><code>#&gt;          date count  package
-#&gt; 1  2019-04-17 20704 magrittr
-#&gt; 2  2019-04-18 18129 magrittr
-#&gt; 3  2019-04-19 13574 magrittr
-#&gt; 4  2019-04-20  7886 magrittr
-#&gt; 5  2019-04-21  7638 magrittr
-#&gt; 6  2019-04-22 15553 magrittr
-#&gt; 7  2019-04-23 20282 magrittr
-#&gt; 8  2019-04-17 31970    dplyr
-#&gt; 9  2019-04-18 29111    dplyr
-#&gt; 10 2019-04-19 22716    dplyr
-#&gt; 11 2019-04-20 15674    dplyr
-#&gt; 12 2019-04-21 15065    dplyr
-#&gt; 13 2019-04-22 26176    dplyr
-#&gt; 14 2019-04-23 31885    dplyr</code></pre>
+#&gt; 1  2019-04-21  7638 magrittr
+#&gt; 2  2019-04-22 15553 magrittr
+#&gt; 3  2019-04-23 20282 magrittr
+#&gt; 4  2019-04-24 21837 magrittr
+#&gt; 5  2019-04-25 20755 magrittr
+#&gt; 6  2019-04-26 19577 magrittr
+#&gt; 7  2019-04-27 10914 magrittr
+#&gt; 8  2019-04-21 15065    dplyr
+#&gt; 9  2019-04-22 26176    dplyr
+#&gt; 10 2019-04-23 31885    dplyr
+#&gt; 11 2019-04-24 36479    dplyr
+#&gt; 12 2019-04-25 33564    dplyr
+#&gt; 13 2019-04-26 30938    dplyr
+#&gt; 14 2019-04-27 19318    dplyr</code></pre>
 <p>Alternative intervals can also be specified:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="reference/cran_downloads.html">cran_downloads</a></span>(<span class="dt">package =</span> <span class="st">"plyr"</span>, <span class="dt">from =</span> <span class="st">"2014-01-01"</span>, <span class="dt">to =</span> <span class="st">"2014-02-01"</span>)</a></code></pre></div>
 <pre><code>#&gt;          date count package
@@ -164,104 +164,114 @@
 <p>For downloads of R itself, give <code>"R"</code> instead of a package:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="reference/cran_downloads.html">cran_downloads</a></span>(<span class="st">"R"</span>)</a></code></pre></div>
 <pre><code>#&gt;          date      version  os count
-#&gt; 1  2019-04-23      3.6.0rc  NA     1
-#&gt; 2  2019-04-23        devel  NA     1
-#&gt; 3  2019-04-23       latest  NA     1
-#&gt; 4  2019-04-23       2.11.0 osx     1
-#&gt; 5  2019-04-23       2.11.1 osx     1
-#&gt; 6  2019-04-23       2.14.0 osx     1
-#&gt; 7  2019-04-23       2.15.0 osx     1
-#&gt; 8  2019-04-23       2.15.2 osx     2
-#&gt; 9  2019-04-23        3.0.0 osx     1
-#&gt; 10 2019-04-23        3.0.1 osx     1
-#&gt; 11 2019-04-23        3.0.3 osx     1
-#&gt; 12 2019-04-23        3.1.2 osx     2
-#&gt; 13 2019-04-23        3.1.3 osx     2
-#&gt; 14 2019-04-23        3.2.1 osx     5
-#&gt; 15 2019-04-23        3.2.4 osx    34
-#&gt; 16 2019-04-23        3.3.3 osx    91
-#&gt; 17 2019-04-23        3.4.0 osx     1
-#&gt; 18 2019-04-23        3.4.1 osx     2
-#&gt; 19 2019-04-23        3.4.3 osx     2
-#&gt; 20 2019-04-23        3.4.4 osx    77
-#&gt; 21 2019-04-23        3.5.0 osx     1
-#&gt; 22 2019-04-23        3.5.1 osx     2
-#&gt; 23 2019-04-23        3.5.2 osx    15
-#&gt; 24 2019-04-23        3.5.3 osx   709
-#&gt; 25 2019-04-23       latest osx   267
-#&gt; 26 2019-04-23       2.15.0 src     1
-#&gt; 27 2019-04-23        2.8.0 src     1
-#&gt; 28 2019-04-23        2.9.2 src     1
-#&gt; 29 2019-04-23        3.0.2 src     3
-#&gt; 30 2019-04-23        3.1.0 src     2
-#&gt; 31 2019-04-23        3.1.2 src     1
-#&gt; 32 2019-04-23        3.2.0 src     3
-#&gt; 33 2019-04-23        3.2.1 src     1
-#&gt; 34 2019-04-23        3.2.2 src     3
-#&gt; 35 2019-04-23        3.2.3 src     1
-#&gt; 36 2019-04-23        3.2.4 src     1
-#&gt; 37 2019-04-23        3.2.5 src     3
-#&gt; 38 2019-04-23        3.3.0 src     3
-#&gt; 39 2019-04-23        3.3.1 src     2
-#&gt; 40 2019-04-23        3.3.3 src     1
-#&gt; 41 2019-04-23        3.4.0 src     1
-#&gt; 42 2019-04-23        3.4.1 src     9
-#&gt; 43 2019-04-23        3.4.2 src     2
-#&gt; 44 2019-04-23        3.4.3 src     1
-#&gt; 45 2019-04-23        3.4.4 src     5
-#&gt; 46 2019-04-23        3.5.0 src     2
-#&gt; 47 2019-04-23        3.5.1 src    15
-#&gt; 48 2019-04-23        3.5.2 src     3
-#&gt; 49 2019-04-23        3.5.3 src   108
-#&gt; 50 2019-04-23       latest src     7
-#&gt; 51 2019-04-23       2.13.2 win     1
-#&gt; 52 2019-04-23       2.14.2 win     1
-#&gt; 53 2019-04-23        3.1.0 win     2
-#&gt; 54 2019-04-23        3.1.1 win     2
-#&gt; 55 2019-04-23        3.2.0 win     1
-#&gt; 56 2019-04-23        3.2.1 win    16
-#&gt; 57 2019-04-23        3.2.5 win     8
-#&gt; 58 2019-04-23        3.3.3 win    42
-#&gt; 59 2019-04-23        3.4.1 win     1
-#&gt; 60 2019-04-23        3.4.2 win     1
-#&gt; 61 2019-04-23        3.4.3 win    21
-#&gt; 62 2019-04-23        3.4.4 win    63
-#&gt; 63 2019-04-23        3.5.1 win     6
-#&gt; 64 2019-04-23        3.5.2 win     3
-#&gt; 65 2019-04-23        3.5.3 win  3666
-#&gt; 66 2019-04-23 3.5.3patched win   497
-#&gt; 67 2019-04-23      3.6.0rc win    18
-#&gt; 68 2019-04-23        devel win    89</code></pre>
+#&gt; 1  2019-04-27       2.10.0 osx     1
+#&gt; 2  2019-04-27       2.10.1 osx     1
+#&gt; 3  2019-04-27       2.11.0 osx     3
+#&gt; 4  2019-04-27       2.11.1 osx     1
+#&gt; 5  2019-04-27       2.12.0 osx     1
+#&gt; 6  2019-04-27       2.12.1 osx     2
+#&gt; 7  2019-04-27       2.12.2 osx     1
+#&gt; 8  2019-04-27       2.13.0 osx     2
+#&gt; 9  2019-04-27       2.13.1 osx     1
+#&gt; 10 2019-04-27       2.13.2 osx     1
+#&gt; 11 2019-04-27       2.14.0 osx     3
+#&gt; 12 2019-04-27       2.14.1 osx     1
+#&gt; 13 2019-04-27       2.14.2 osx     2
+#&gt; 14 2019-04-27       2.15.0 osx     3
+#&gt; 15 2019-04-27       2.15.1 osx     2
+#&gt; 16 2019-04-27       2.15.2 osx     1
+#&gt; 17 2019-04-27       2.15.3 osx     2
+#&gt; 18 2019-04-27        3.0.0 osx     1
+#&gt; 19 2019-04-27        3.1.0 osx     1
+#&gt; 20 2019-04-27        3.1.3 osx     1
+#&gt; 21 2019-04-27        3.2.1 osx     2
+#&gt; 22 2019-04-27        3.2.4 osx    44
+#&gt; 23 2019-04-27        3.3.0 osx     2
+#&gt; 24 2019-04-27        3.3.3 osx    49
+#&gt; 25 2019-04-27        3.4.0 osx     1
+#&gt; 26 2019-04-27        3.4.1 osx     2
+#&gt; 27 2019-04-27        3.4.3 osx     2
+#&gt; 28 2019-04-27        3.4.4 osx    60
+#&gt; 29 2019-04-27        3.5.0 osx     3
+#&gt; 30 2019-04-27        3.5.1 osx     4
+#&gt; 31 2019-04-27        3.5.2 osx     5
+#&gt; 32 2019-04-27        3.5.3 osx    14
+#&gt; 33 2019-04-27        3.6.0 osx   487
+#&gt; 34 2019-04-27       latest osx   202
+#&gt; 35 2019-04-27        2.1.0 src     1
+#&gt; 36 2019-04-27       2.12.1 src     1
+#&gt; 37 2019-04-27        2.2.0 src     1
+#&gt; 38 2019-04-27        2.6.0 src     1
+#&gt; 39 2019-04-27        3.0.0 src     1
+#&gt; 40 2019-04-27        3.0.1 src     1
+#&gt; 41 2019-04-27        3.0.3 src     6
+#&gt; 42 2019-04-27        3.2.0 src     1
+#&gt; 43 2019-04-27        3.2.2 src     1
+#&gt; 44 2019-04-27        3.2.3 src     2
+#&gt; 45 2019-04-27        3.2.4 src     1
+#&gt; 46 2019-04-27        3.3.0 src     1
+#&gt; 47 2019-04-27        3.4.0 src     2
+#&gt; 48 2019-04-27        3.4.1 src     4
+#&gt; 49 2019-04-27        3.4.2 src     2
+#&gt; 50 2019-04-27        3.4.4 src     3
+#&gt; 51 2019-04-27        3.5.0 src     1
+#&gt; 52 2019-04-27        3.5.1 src     8
+#&gt; 53 2019-04-27        3.5.2 src     2
+#&gt; 54 2019-04-27        3.5.3 src     8
+#&gt; 55 2019-04-27        3.6.0 src    52
+#&gt; 56 2019-04-27       latest src     2
+#&gt; 57 2019-04-27       2.13.0 win     1
+#&gt; 58 2019-04-27       2.13.2 win     1
+#&gt; 59 2019-04-27       2.14.0 win     1
+#&gt; 60 2019-04-27       2.14.1 win     1
+#&gt; 61 2019-04-27        3.0.1 win     1
+#&gt; 62 2019-04-27        3.2.1 win     4
+#&gt; 63 2019-04-27        3.2.3 win     1
+#&gt; 64 2019-04-27        3.2.5 win    11
+#&gt; 65 2019-04-27        3.3.0 win     9
+#&gt; 66 2019-04-27        3.3.1 win     2
+#&gt; 67 2019-04-27        3.3.3 win    19
+#&gt; 68 2019-04-27        3.4.1 win     2
+#&gt; 69 2019-04-27        3.4.3 win    10
+#&gt; 70 2019-04-27        3.4.4 win    22
+#&gt; 71 2019-04-27        3.5.0 win     8
+#&gt; 72 2019-04-27        3.5.1 win     8
+#&gt; 73 2019-04-27        3.5.2 win     8
+#&gt; 74 2019-04-27        3.5.3 win   140
+#&gt; 75 2019-04-27 3.5.3patched win   119
+#&gt; 76 2019-04-27        3.6.0 win  2178
+#&gt; 77 2019-04-27 3.6.0patched win    83
+#&gt; 78 2019-04-27        devel win   134</code></pre>
 </div>
 <div id="top-downloaded-packages" class="section level2">
 <h2 class="hasAnchor">
 <a href="#top-downloaded-packages" class="anchor"></a>Top downloaded packages</h2>
 <p>Last day for which data is available:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="reference/cran_top_downloads.html">cran_top_downloads</a></span>()</a></code></pre></div>
-<pre><code>#&gt;    rank    package count       from         to
-#&gt; 1     1      rlang 38410 2019-04-23 2019-04-23
-#&gt; 2     2   devtools 36573 2019-04-23 2019-04-23
-#&gt; 3     3       Rcpp 36357 2019-04-23 2019-04-23
-#&gt; 4     4      dplyr 31885 2019-04-23 2019-04-23
-#&gt; 5     5    ggplot2 31446 2019-04-23 2019-04-23
-#&gt; 6     6     tibble 29470 2019-04-23 2019-04-23
-#&gt; 7     7 data.table 26979 2019-04-23 2019-04-23
-#&gt; 8     8       glue 25287 2019-04-23 2019-04-23
-#&gt; 9     9        cli 25226 2019-04-23 2019-04-23
-#&gt; 10   10     pillar 24934 2019-04-23 2019-04-23</code></pre>
+<pre><code>#&gt;    rank              package count       from         to
+#&gt; 1     1             devtools 30485 2019-04-27 2019-04-27
+#&gt; 2     2       microbenchmark 19588 2019-04-27 2019-04-27
+#&gt; 3     3                dplyr 19318 2019-04-27 2019-04-27
+#&gt; 4     4       assertive.base 19216 2019-04-27 2019-04-27
+#&gt; 5     5 assertive.reflection 19210 2019-04-27 2019-04-27
+#&gt; 6     6             fortunes 19204 2019-04-27 2019-04-27
+#&gt; 7     7          googledrive 19171 2019-04-27 2019-04-27
+#&gt; 8     8                rlang 18953 2019-04-27 2019-04-27
+#&gt; 9     9                 Rcpp 17224 2019-04-27 2019-04-27
+#&gt; 10   10              ggplot2 16977 2019-04-27 2019-04-27</code></pre>
 <p>Last week (6 days prior to the last day for which data is available):</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="reference/cran_top_downloads.html">cran_top_downloads</a></span>(<span class="st">"last-week"</span>)</a></code></pre></div>
 <pre><code>#&gt;    rank    package  count       from         to
-#&gt; 1     1   devtools 238134 2019-04-17 2019-04-23
-#&gt; 2     2      rlang 201976 2019-04-17 2019-04-23
-#&gt; 3     3       Rcpp 180467 2019-04-17 2019-04-23
-#&gt; 4     4      dplyr 172597 2019-04-17 2019-04-23
-#&gt; 5     5    ggplot2 170241 2019-04-17 2019-04-23
-#&gt; 6     6 data.table 155319 2019-04-17 2019-04-23
-#&gt; 7     7     tibble 153657 2019-04-17 2019-04-23
-#&gt; 8     8       glue 132247 2019-04-17 2019-04-23
-#&gt; 9     9        cli 131157 2019-04-17 2019-04-23
-#&gt; 10   10     pillar 129525 2019-04-17 2019-04-23</code></pre>
+#&gt; 1     1   devtools 234247 2019-04-21 2019-04-27
+#&gt; 2     2      rlang 210403 2019-04-21 2019-04-27
+#&gt; 3     3      dplyr 193425 2019-04-21 2019-04-27
+#&gt; 4     4       Rcpp 191614 2019-04-21 2019-04-27
+#&gt; 5     5    ggplot2 176468 2019-04-21 2019-04-27
+#&gt; 6     6     tibble 173132 2019-04-21 2019-04-27
+#&gt; 7     7 data.table 149969 2019-04-21 2019-04-27
+#&gt; 8     8       glue 141711 2019-04-21 2019-04-27
+#&gt; 9     9        cli 140817 2019-04-21 2019-04-27
+#&gt; 10   10     pillar 140412 2019-04-21 2019-04-27</code></pre>
 </div>
 <div id="raw-json-api" class="section level2">
 <h2 class="hasAnchor">
