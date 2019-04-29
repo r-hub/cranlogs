@@ -13,12 +13,16 @@ knitr::opts_chunk$set(
   error = FALSE)
 ```
 
-# Download logs from the RStudio CRAN mirror
+# cranlogs
 
+> Download logs from the RStudio CRAN mirror
+
+<!-- badges: start -->
 [![Linux Build Status](https://travis-ci.org/r-hub/cranlogs.svg?branch=master)](https://travis-ci.org/r-hub/cranlogs)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/github/metacran/cranlogs?svg=true)](https://ci.appveyor.com/project/gaborcsardi/cranlogs)
 [![CRAN version](http://www.r-pkg.org/badges/version/cranlogs)](http://www.r-pkg.org/pkg/cranlogs)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/cranlogs)](http://www.r-pkg.org/pkg/cranlogs)
+<!-- badges: end -->
 
 [RStudio](http://www.rstudio.com) publishes the download logs from
 their CRAN package mirror daily at http://cran-logs.rstudio.com.
