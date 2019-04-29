@@ -3,6 +3,8 @@ authors:
     href: "https://www.r-consortium.org/"
     html: "<img src='https://www.r-consortium.org/wp-content/uploads/sites/13/2016/09/RConsortium_Horizontal_Pantone.png' height=24>"
 
+title: Download Logs from the RStudio CRAN Mirror
+
 reference:
 - title: All functions
   desc: ~
