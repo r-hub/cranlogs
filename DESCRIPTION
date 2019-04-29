@@ -1,6 +1,6 @@
 Package: cranlogs
 Title: Download Logs from the 'RStudio' 'CRAN' Mirror
-Version: 2.1.1
+Version: 2.1.1.9000
 Authors@R: c(
     person("Gábor", "Csárdi",, "csardi.gabor@gmail.com", role = c("aut", "cre")),
     person("R Consortium", role = c("fnd")))
