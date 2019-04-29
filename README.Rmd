@@ -30,8 +30,9 @@ their CRAN package mirror daily at http://cran-logs.rstudio.com.
 This R package queries a database that contains the daily download
 numbers for each package.
 
-The RStudio CRAN mirror is not the only CRAN mirror, but it's a popular one: it's the default choice for RStudio users. The actual number of downloads
- over all CRAN mirrors is unknown.
+The RStudio CRAN mirror is not the only CRAN mirror, but it's a popular
+one: it's the default choice for RStudio users. The actual number of
+downloads over all CRAN mirrors is unknown.
 
 ## Installation
 
@@ -58,7 +59,9 @@ library(cranlogs)
 cran_downloads()
 ```
 
-The last week (6 days prior to the last day for which data is available), or the last month (29 days prior to the last day for which data is available) can be also easily queried:
+The last week (6 days prior to the last day for which data is available),
+or the last month (29 days prior to the last day for which data is
+available) can be also easily queried:
 
 ```{r}
 cran_downloads(when = "last-week")
@@ -98,4 +101,5 @@ cran_top_downloads("last-week")
 
 ## Raw JSON API
 
-See [the GitHub repo of the API of the CRAN downloads database](https://github.com/r-hub/cranlogs.app).
+See [the GitHub repo of the API of the CRAN downloads
+  database](https://github.com/r-hub/cranlogs.app).
