@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Download Logs from the RStudio CRAN Mirror</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.1.9000</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 <a href="#cranlogs-2-1-1" class="anchor"></a>cranlogs 2.1.1<small> 2019-04-29 </small>
 </h1>
 <ul>
-<li><p>New function cranlogs_badge() to construct the Markdown string of a badge for the README.</p></li>
+<li><p>New function <code><a href="../reference/cranlogs_badge.html">cranlogs_badge()</a></code> to construct the Markdown string of a badge for the README.</p></li>
 <li><p>Update the definition of the argument values “last-day”, “last-week” and “last-month” to make them consistent with the database: “last-day” is the last day for which data is available, “last-week” 6 days prior to that last day with data, “last-month” 29 days prior to that last day with data.</p></li>
 <li><p>Drop row names after reordering which avoids having meaningless row names (<a href='https://github.com/patperry'>@patperry</a>, <a href='https://github.com/r-hub/cranlogs/issues/23'>#23</a>)</p></li>
 <li><p>Fix R download counts if a day is missing data (e.g. 2015-08-23).</p></li>
