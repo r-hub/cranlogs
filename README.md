@@ -20,8 +20,9 @@ downloads](http://cranlogs.r-pkg.org/badges/cranlogs)](http://www.r-pkg.org/pkg/
 [RStudio](http://www.rstudio.com) publishes the download logs from their
 CRAN package mirror daily at <http://cran-logs.rstudio.com>.
 
-This R package queries a database that contains the daily download
-numbers for each package.
+This R package queries a [web API maintained by
+R-hub](https://github.com/r-hub/cranlogs.app#the-api-of-the-cran-downloads-database)
+that contains the daily download numbers for each package.
 
 The RStudio CRAN mirror is not the only CRAN mirror, but it’s a popular
 one: it’s the default choice for RStudio users. The actual number of
