@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Daily package downloads from the RStudio CRAN mirror — cran_downloads • Download Logs from the RStudio CRAN Mirror</title>
+<title>Daily package downloads from the RStudio CRAN mirror — cran_downloads • cranlogs</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -29,8 +29,9 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -41,6 +42,8 @@
 <meta property="og:title" content="Daily package downloads from the RStudio CRAN mirror — cran_downloads" />
 
 <meta property="og:description" content="Daily package downloads from the RStudio CRAN mirror" />
+
+<meta property="og:image" content="https://r-hub.github.io/cranlogs/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -70,7 +73,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">Download Logs from the RStudio CRAN Mirror</a>
+        <a class="navbar-link" href="../index.html">cranlogs</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.1.9000</span>
       </span>
     </div>
@@ -179,20 +182,20 @@ details). If this is given, then <code>from</code> and <code>to</code> are ignor
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Default is last day for which data is available.</span>
 <span class='fu'>cran_downloads</span>()</div><div class='output co'>#&gt;         date   count
-#&gt; 1 2019-04-30 3515773</div><div class='input'>
+#&gt; 1 2019-06-03 2984098</div><div class='input'>
 <span class='co'>## All downloads for 'dplyr' in the last day for which data is available.</span>
 <span class='fu'>cran_downloads</span>(<span class='kw'>packages</span> <span class='kw'>=</span> <span class='st'>"dplyr"</span>)</div><div class='output co'>#&gt;         date count package
-#&gt; 1 2019-04-30 36647   dplyr</div><div class='input'>
+#&gt; 1 2019-06-03 35872   dplyr</div><div class='input'>
 <span class='co'>## Daily downloads for 'igraph' last week</span>
 <span class='co'>## (6 days prior to the last day for which data is available)</span>
 <span class='fu'>cran_downloads</span>(<span class='kw'>packages</span> <span class='kw'>=</span> <span class='st'>"igraph"</span>, <span class='kw'>when</span> <span class='kw'>=</span> <span class='st'>"last-week"</span>)</div><div class='output co'>#&gt;         date count package
-#&gt; 1 2019-04-24 18112  igraph
-#&gt; 2 2019-04-25 13958  igraph
-#&gt; 3 2019-04-26 12410  igraph
-#&gt; 4 2019-04-27  8872  igraph
-#&gt; 5 2019-04-28  9825  igraph
-#&gt; 6 2019-04-29 14243  igraph
-#&gt; 7 2019-04-30 13607  igraph</div><div class='input'>
+#&gt; 1 2019-05-28  7735  igraph
+#&gt; 2 2019-05-29  7591  igraph
+#&gt; 3 2019-05-30  6978  igraph
+#&gt; 4 2019-05-31  6461  igraph
+#&gt; 5 2019-06-01  3053  igraph
+#&gt; 6 2019-06-02  3001  igraph
+#&gt; 7 2019-06-03  6943  igraph</div><div class='input'>
 <span class='co'>## Downloads in the specified time interval</span>
 <span class='fu'>cran_downloads</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"2014-06-30"</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='st'>"2014-08-08"</span>)</div><div class='output co'>#&gt;          date  count
 #&gt; 1  2014-06-30 211630
@@ -237,79 +240,73 @@ details). If this is given, then <code>from</code> and <code>to</code> are ignor
 #&gt; 40 2014-08-08 181458</div><div class='input'>
 <span class='co'>## Multiple packages</span>
 <span class='fu'>cran_downloads</span>(<span class='kw'>packages</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ggplot2"</span>, <span class='st'>"plyr"</span>, <span class='st'>"dplyr"</span>))</div><div class='output co'>#&gt;         date count package
-#&gt; 1 2019-04-30 33817 ggplot2
-#&gt; 2 2019-04-30 20489    plyr
-#&gt; 3 2019-04-30 36647   dplyr</div><div class='input'>
+#&gt; 1 2019-06-03 28970 ggplot2
+#&gt; 2 2019-06-03 17922    plyr
+#&gt; 3 2019-06-03 35872   dplyr</div><div class='input'>
 <span class='co'>## R downloads</span>
 <span class='fu'>cran_downloads</span>(<span class='st'>"R"</span>)</div><div class='output co'>#&gt;          date      version  os count
-#&gt; 1  2019-04-30 3.6.0patched  NA     1
-#&gt; 2  2019-04-30        devel  NA     1
-#&gt; 3  2019-04-30       latest  NA     6
-#&gt; 4  2019-04-30       2.12.1 osx     1
-#&gt; 5  2019-04-30       2.13.0 osx     1
-#&gt; 6  2019-04-30       2.13.2 osx     1
-#&gt; 7  2019-04-30       2.14.2 osx     1
-#&gt; 8  2019-04-30       2.15.0 osx     1
-#&gt; 9  2019-04-30       2.15.1 osx     3
-#&gt; 10 2019-04-30       2.15.2 osx     1
-#&gt; 11 2019-04-30        3.0.3 osx     1
-#&gt; 12 2019-04-30        3.1.0 osx     1
-#&gt; 13 2019-04-30        3.1.3 osx     2
-#&gt; 14 2019-04-30        3.2.1 osx    10
-#&gt; 15 2019-04-30        3.2.4 osx    80
-#&gt; 16 2019-04-30        3.3.0 osx     1
-#&gt; 17 2019-04-30        3.3.1 osx     1
-#&gt; 18 2019-04-30        3.3.3 osx   106
-#&gt; 19 2019-04-30        3.4.0 osx     5
-#&gt; 20 2019-04-30        3.4.1 osx     3
-#&gt; 21 2019-04-30        3.4.2 osx     1
-#&gt; 22 2019-04-30        3.4.3 osx     3
-#&gt; 23 2019-04-30        3.4.4 osx    63
-#&gt; 24 2019-04-30        3.5.0 osx     5
-#&gt; 25 2019-04-30        3.5.2 osx    11
-#&gt; 26 2019-04-30        3.5.3 osx    64
-#&gt; 27 2019-04-30        3.6.0 osx   697
-#&gt; 28 2019-04-30       latest osx   365
-#&gt; 29 2019-04-30       2.13.0 src     1
-#&gt; 30 2019-04-30       2.15.1 src     1
-#&gt; 31 2019-04-30       2.15.2 src     1
-#&gt; 32 2019-04-30        3.0.1 src     1
-#&gt; 33 2019-04-30        3.0.2 src     1
-#&gt; 34 2019-04-30        3.1.0 src     1
-#&gt; 35 2019-04-30        3.1.3 src     1
-#&gt; 36 2019-04-30        3.2.1 src     1
-#&gt; 37 2019-04-30        3.2.2 src     1
-#&gt; 38 2019-04-30        3.3.0 src     2
-#&gt; 39 2019-04-30        3.4.0 src     1
-#&gt; 40 2019-04-30        3.4.1 src     7
-#&gt; 41 2019-04-30        3.4.2 src     3
-#&gt; 42 2019-04-30        3.4.3 src     1
-#&gt; 43 2019-04-30        3.5.0 src     3
-#&gt; 44 2019-04-30        3.5.1 src    14
-#&gt; 45 2019-04-30        3.5.2 src     2
-#&gt; 46 2019-04-30        3.5.3 src    17
-#&gt; 47 2019-04-30        3.6.0 src   141
-#&gt; 48 2019-04-30       latest src     1
-#&gt; 49 2019-04-30        3.0.1 win     1
-#&gt; 50 2019-04-30        3.0.2 win     2
-#&gt; 51 2019-04-30        3.0.3 win     1
-#&gt; 52 2019-04-30        3.1.2 win     1
-#&gt; 53 2019-04-30        3.2.0 win     2
-#&gt; 54 2019-04-30        3.2.1 win     2
-#&gt; 55 2019-04-30        3.2.5 win    22
-#&gt; 56 2019-04-30        3.3.0 win     5
-#&gt; 57 2019-04-30        3.3.3 win    47
-#&gt; 58 2019-04-30        3.4.0 win     1
-#&gt; 59 2019-04-30        3.4.2 win     1
-#&gt; 60 2019-04-30        3.4.3 win    14
-#&gt; 61 2019-04-30        3.4.4 win    10
-#&gt; 62 2019-04-30        3.5.0 win     6
-#&gt; 63 2019-04-30        3.5.1 win     5
-#&gt; 64 2019-04-30        3.5.2 win     1
-#&gt; 65 2019-04-30        3.5.3 win   117
-#&gt; 66 2019-04-30        3.6.0 win  3666
-#&gt; 67 2019-04-30 3.6.0patched win   588
-#&gt; 68 2019-04-30        devel win   122</div></pre>
+#&gt; 1  2019-06-03       2.11.0 osx     1
+#&gt; 2  2019-06-03       2.12.2 osx     1
+#&gt; 3  2019-06-03       2.13.1 osx     1
+#&gt; 4  2019-06-03       2.13.2 osx     4
+#&gt; 5  2019-06-03       2.15.1 osx     1
+#&gt; 6  2019-06-03        3.0.1 osx     1
+#&gt; 7  2019-06-03        3.0.2 osx     1
+#&gt; 8  2019-06-03        3.0.3 osx     1
+#&gt; 9  2019-06-03        3.1.1 osx     1
+#&gt; 10 2019-06-03        3.2.0 osx     1
+#&gt; 11 2019-06-03        3.2.1 osx     4
+#&gt; 12 2019-06-03        3.2.4 osx     1
+#&gt; 13 2019-06-03        3.3.0 osx     1
+#&gt; 14 2019-06-03        3.3.2 osx     1
+#&gt; 15 2019-06-03        3.3.3 osx    63
+#&gt; 16 2019-06-03        3.4.0 osx     1
+#&gt; 17 2019-06-03        3.4.1 osx     2
+#&gt; 18 2019-06-03        3.4.3 osx     1
+#&gt; 19 2019-06-03        3.4.4 osx    39
+#&gt; 20 2019-06-03        3.5.0 osx     3
+#&gt; 21 2019-06-03        3.5.1 osx     3
+#&gt; 22 2019-06-03        3.5.2 osx     8
+#&gt; 23 2019-06-03        3.5.3 osx    67
+#&gt; 24 2019-06-03        3.6.0 osx   601
+#&gt; 25 2019-06-03       latest osx   378
+#&gt; 26 2019-06-03       2.12.0 src     1
+#&gt; 27 2019-06-03       2.15.0 src     2
+#&gt; 28 2019-06-03        3.1.2 src     2
+#&gt; 29 2019-06-03        3.1.3 src     1
+#&gt; 30 2019-06-03        3.2.1 src     2
+#&gt; 31 2019-06-03        3.2.5 src     1
+#&gt; 32 2019-06-03        3.3.0 src     2
+#&gt; 33 2019-06-03        3.3.2 src     1
+#&gt; 34 2019-06-03        3.3.3 src     2
+#&gt; 35 2019-06-03        3.4.0 src     1
+#&gt; 36 2019-06-03        3.4.1 src     8
+#&gt; 37 2019-06-03        3.4.2 src     9
+#&gt; 38 2019-06-03        3.4.3 src     1
+#&gt; 39 2019-06-03        3.4.4 src     2
+#&gt; 40 2019-06-03        3.5.0 src     6
+#&gt; 41 2019-06-03        3.5.1 src    33
+#&gt; 42 2019-06-03        3.5.2 src     6
+#&gt; 43 2019-06-03        3.5.3 src     7
+#&gt; 44 2019-06-03        3.6.0 src    96
+#&gt; 45 2019-06-03       2.13.2 win     1
+#&gt; 46 2019-06-03        3.2.1 win     3
+#&gt; 47 2019-06-03        3.2.5 win     3
+#&gt; 48 2019-06-03        3.3.0 win     1
+#&gt; 49 2019-06-03        3.3.1 win     1
+#&gt; 50 2019-06-03        3.3.2 win     1
+#&gt; 51 2019-06-03        3.3.3 win    55
+#&gt; 52 2019-06-03        3.4.0 win     1
+#&gt; 53 2019-06-03        3.4.2 win     2
+#&gt; 54 2019-06-03        3.4.3 win    13
+#&gt; 55 2019-06-03        3.4.4 win    22
+#&gt; 56 2019-06-03        3.5.0 win     3
+#&gt; 57 2019-06-03        3.5.1 win     2
+#&gt; 58 2019-06-03        3.5.2 win     4
+#&gt; 59 2019-06-03        3.5.3 win    99
+#&gt; 60 2019-06-03        3.6.0 win  3281
+#&gt; 61 2019-06-03 3.6.0patched win   355
+#&gt; 62 2019-06-03        devel win   126</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -334,7 +331,7 @@ details). If this is given, then <code>from</code> and <code>to</code> are ignor
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
    </div>

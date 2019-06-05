@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://r-hub.github.io/cranlogs/index.html</loc>
+  </url>
+  <url>
+    <loc>https://r-hub.github.io/cranlogs/reference/cran_downloads.html</loc>
+  </url>
+  <url>
+    <loc>https://r-hub.github.io/cranlogs/reference/cran_top_downloads.html</loc>
+  </url>
+  <url>
+    <loc>https://r-hub.github.io/cranlogs/reference/cranlogs-package.html</loc>
+  </url>
+  <url>
+    <loc>https://r-hub.github.io/cranlogs/reference/cranlogs_badge.html</loc>
+  </url>
+</urlset>
