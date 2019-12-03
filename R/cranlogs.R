@@ -90,7 +90,8 @@ cran_downloads <- function(packages = NULL,
     ppackages <- paste0("/", ppackages)
   }
 
-  req <- GET(paste0(daily_url, interval, ppackages))
+  req <- GET(paste0(daily_url, interval, ppackages),
+             httr::user_agent("cranlogs R package by R-hub"))
   stop_for_status(req)
   r <- fromJSON(content(req, as = "text"), simplifyVector = FALSE)
 
@@ -184,7 +185,8 @@ cran_top_downloads <- function(when = c("last-day", "last-week",
                                  "last-month"), count = 10) {
 
   when <- match.arg(when)
-  req <- GET(paste0(top_url, when, '/', count))
+  req <- GET(paste0(top_url, when, '/', count),
+             httr::user_agent("cranlogs R package by R-hub"))
   stop_for_status(req)
   r <- fromJSON(content(req, as = "text", encoding = "UTF-8"), 
     simplifyVector = FALSE)
