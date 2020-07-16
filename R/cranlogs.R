@@ -5,6 +5,7 @@
 
 base_url  <- "http://cranlogs.r-pkg.org/"
 daily_url <- paste0(base_url, "downloads/daily/")
+total_url <- paste0(base_url, "downloads/total/")
 top_url   <- paste0(base_url, "top/")
 
 #' Daily package downloads from the RStudio CRAN mirror
@@ -60,7 +61,8 @@ top_url   <- paste0(base_url, "top/")
 
 cran_downloads <- function(packages = NULL,
                            when = c("last-day", "last-week", "last-month"),
-                           from = "last-day", to = "last-day") {
+                           from = "last-day", to = "last-day",
+                           total = FALSE) {
 
   if (!missing(when)) {
     interval <- match.arg(when)
@@ -89,8 +91,14 @@ cran_downloads <- function(packages = NULL,
     ppackages <- paste(packages, collapse = ",")
     ppackages <- paste0("/", ppackages)
   }
-
-  req <- GET(paste0(daily_url, interval, ppackages),
+  
+  if (total){
+    request_url <- total_url
+  }else{
+    request_url <- daily_url   
+  }
+  
+  req <- GET(paste0(request_url, interval, ppackages),
              httr::user_agent("cranlogs R package by R-hub"))
   stop_for_status(req)
   r <- fromJSON(content(req, as = "text"), simplifyVector = FALSE)
