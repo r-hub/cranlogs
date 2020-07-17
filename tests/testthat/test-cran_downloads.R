@@ -15,3 +15,13 @@ test_that("cran_downloads works", {
   expect_is(cran_downloads("igraph", from = from, to = to),
             "data.frame")
 })
+
+test_that("cran_downloads works with totals", {
+  skip_on_cran()
+  
+  from <- "2019-02-23"
+  to <- "2019-04-24"
+  
+  expect_is(cran_downloads("igraph", from = from, to = to, total=TRUE),
+            "data.frame")
+})
