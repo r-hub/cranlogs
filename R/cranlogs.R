@@ -94,7 +94,7 @@ cran_downloads <- function(packages = NULL,
   
   if (total){
     request_url <- total_url
-  }else{
+  } else {
     request_url <- daily_url   
   }
   
@@ -106,8 +106,28 @@ cran_downloads <- function(packages = NULL,
   if ("error" %in% names(r) && r$error == "Invalid query") {
     stop("Invalid query, probably invalid dates")
   }
-  to_df(r, packages)
+  
+  if (total){
+    result <- to_df_total(r)
+  } else {
+    result <- to_df(r, packages)
+  }
 
+  result
+}
+
+to_df_total <- function(res){
+  num_columns <- 3
+  if ('package' %in% names(res[[1]])){
+    num_columns <- 4
+  }
+  
+  df <- data.frame(t(vapply(res, unlist, character(num_columns))),
+             stringsAsFactors = FALSE)
+  df$start <- as.Date(df$start)
+  df$end <- as.Date(df$end)
+  df$downloads <- as.integer(df$downloads)
+  df
 }
 
 to_df <- function(res, packages) {
