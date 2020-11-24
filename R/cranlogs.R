@@ -19,7 +19,7 @@ top_url   <- paste0(base_url, "top/")
 #'   \code{last-day}. It is ignored if \code{when} is given.
 #' @param to End date, in \code{yyyy-mm-dd} format, or
 #'   \code{last-day}. It is ignored if \code{when} is given.
-#' @return For packages a data frame with columns:
+#' @return For packages a tibble with columns:
 #'   \item{\code{package}}{The package. This column is missing if
 #'     all packages were queried.}
 #'   \item{\code{date}}{Day of the downloads, it is a Date object.}
@@ -98,34 +98,32 @@ cran_downloads <- function(packages = NULL,
   if ("error" %in% names(r) && r$error == "Invalid query") {
     stop("Invalid query, probably invalid dates")
   }
-  to_df(r, packages)
+  to_tibble(r, packages)
 
 }
 
-to_df <- function(res, packages) {
+to_tibble <- function(res, packages) {
   if (length(res) == 1 && identical(toupper(packages), "R")) {
-    to_df_r(res[[1]])
+    to_tibble_r(res[[1]])
   } else if (length(res) == 1 && is.null(res[[1]]$package)) {
-    to_df_1(res[[1]])
+    to_tibble_1(res[[1]])
   } else {
-    dfs <- lapply(res, to_df_1)
+    dfs <- lapply(res, to_tibble_1)
     for (i in seq_along(res)) dfs[[i]]$package <- res[[i]]$package
     do.call(rbind, dfs)
   }
 }
 
-to_df_1 <- function(res1) {
-  df <- data.frame(
-    stringsAsFactors = FALSE,
+to_tibble_1 <- function(res1) {
+  df <- tibble::tibble(
     date = as.Date(vapply(res1$downloads, "[[", "", "day")),
     count = vapply(res1$downloads, "[[", 1, "downloads")
   )
   fill_in_dates(df, as.Date(res1$start), as.Date(res1$end))
 }
 
-to_df_r <- function(res1) {
-  df <- data.frame(
-    stringsAsFactors = FALSE,
+to_tibble_r <- function(res1) {
+  df <- tibble::tibble(
     date = as.Date(vapply(res1$downloads, "[[", "", "day")),
     version = vapply(res1$downloads, "[[", "", "version"),
     os = vapply(res1$downloads, "[[", "", "os"),
@@ -140,8 +138,7 @@ fill_in_dates <- function(df, start, end) {
 
   dates <- seq(start, end, by = as.difftime(1, units = "days"))
   if (any(! dates %in% df$date)) {
-    df2 <- data.frame(
-      stringsAsFactors = FALSE,
+    df2 <- tibble::tibble(
       date = dates[! dates %in% df$date],
       count = 0
     )
@@ -159,7 +156,7 @@ fill_in_dates <- function(df, start, end) {
 #' @param count Number of packages to list. Note that the DB server
 #'   lists only at most 100 packages. This number might change in the
 #'   future.
-#' @return A data frame with columns: \code{rank}, \code{package},
+#' @return A tibble with columns: \code{rank}, \code{package},
 #'   \code{count}, \code{from}, \code{to}.
 #'
 #' @family CRAN downloads
@@ -191,8 +188,7 @@ cran_top_downloads <- function(when = c("last-day", "last-week",
   r <- fromJSON(content(req, as = "text", encoding = "UTF-8"), 
     simplifyVector = FALSE)
   
-  df <- data.frame(
-    stringsAsFactors = FALSE,
+  df <- tibble::tibble(
     rank = seq_along(r$downloads),
     package = vapply(r$downloads, "[[", "", "package"),
     count = as.integer(vapply(r$downloads, "[[", "", "downloads")),

@@ -4,8 +4,7 @@
 \alias{cran_top_downloads}
 \title{Top downloaded packages from the RStudio CRAN mirror}
 \usage{
-cran_top_downloads(when = c("last-day", "last-week", "last-month"),
-  count = 10)
+cran_top_downloads(when = c("last-day", "last-week", "last-month"), count = 10)
 }
 \arguments{
 \item{when}{\code{last-day}, \code{last-week} or \code{last-month} (see 
@@ -16,7 +15,7 @@ lists only at most 100 packages. This number might change in the
 future.}
 }
 \value{
-A data frame with columns: \code{rank}, \code{package},
+A tibble with columns: \code{rank}, \code{package},
   \code{count}, \code{from}, \code{to}.
 }
 \description{
@@ -42,6 +41,7 @@ cran_top_downloads(when = "last-week")
 
 }
 \seealso{
-Other CRAN downloads: \code{\link{cran_downloads}}
+Other CRAN downloads: 
+\code{\link{cran_downloads}()}
 }
 \concept{CRAN downloads}

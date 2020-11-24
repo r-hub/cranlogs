@@ -4,8 +4,12 @@
 \alias{cran_downloads}
 \title{Daily package downloads from the RStudio CRAN mirror}
 \usage{
-cran_downloads(packages = NULL, when = c("last-day", "last-week",
-  "last-month"), from = "last-day", to = "last-day")
+cran_downloads(
+  packages = NULL,
+  when = c("last-day", "last-week", "last-month"),
+  from = "last-day",
+  to = "last-day"
+)
 }
 \arguments{
 \item{packages}{A character vector, the packages to query,
@@ -23,7 +27,7 @@ details). If this is given, then \code{from} and \code{to} are ignored.}
 \code{last-day}. It is ignored if \code{when} is given.}
 }
 \value{
-For packages a data frame with columns:
+For packages a tibble with columns:
   \item{\code{package}}{The package. This column is missing if
     all packages were queried.}
   \item{\code{date}}{Day of the downloads, it is a Date object.}
@@ -66,6 +70,7 @@ cran_downloads("R")
 }
 }
 \seealso{
-Other CRAN downloads: \code{\link{cran_top_downloads}}
+Other CRAN downloads: 
+\code{\link{cran_top_downloads}()}
 }
 \concept{CRAN downloads}

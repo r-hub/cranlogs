@@ -1,5 +1,6 @@
 
 # dev
+* Return a `tibble::tibble()` rather than a `data.frame`
 
 # cranlogs 2.1.1
 

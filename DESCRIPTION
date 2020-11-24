@@ -12,8 +12,9 @@ URL: https://github.com/r-hub/cranlogs, https://r-hub.github.io/cranlogs
 BugReports: https://github.com/r-hub/cranlogs/issues
 Imports:
     httr,
-    jsonlite
+    jsonlite,
+    tibble
 Encoding: UTF-8
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Suggests: 
     testthat

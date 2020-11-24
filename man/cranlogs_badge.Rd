@@ -4,8 +4,11 @@
 \alias{cranlogs_badge}
 \title{Create Markdown code for a cranlogs badge}
 \usage{
-cranlogs_badge(package_name, summary = c("last-month", "last-day",
-  "last-week", "grand-total"), color = "blue")
+cranlogs_badge(
+  package_name,
+  summary = c("last-month", "last-day", "last-week", "grand-total"),
+  color = "blue"
+)
 }
 \arguments{
 \item{package_name}{name of the package}
