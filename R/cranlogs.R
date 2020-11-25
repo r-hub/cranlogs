@@ -5,6 +5,7 @@
 
 base_url  <- "http://cranlogs.r-pkg.org/"
 daily_url <- paste0(base_url, "downloads/daily/")
+total_url <- paste0(base_url, "downloads/total/")
 top_url   <- paste0(base_url, "top/")
 
 #' Daily package downloads from the RStudio CRAN mirror
@@ -19,6 +20,9 @@ top_url   <- paste0(base_url, "top/")
 #'   \code{last-day}. It is ignored if \code{when} is given.
 #' @param to End date, in \code{yyyy-mm-dd} format, or
 #'   \code{last-day}. It is ignored if \code{when} is given.
+#' @param total logical value, FALSE by default. If TRUE then the total
+#'   number of downloads over the given period will be returned instead 
+#'   of the daily number.
 #' @return For packages a data frame with columns:
 #'   \item{\code{package}}{The package. This column is missing if
 #'     all packages were queried.}
@@ -27,6 +31,13 @@ top_url   <- paste0(base_url, "top/")
 #'
 #'   For downloads of R, there are also columns for the operating
 #'   system (\code{os}) and the R version (\code{version}).
+#'   
+#'   If total is TRUE then a data frame with columns:
+#'   \item{\code{start}}{start date of the downloads, it is a Date object.}
+#'   \item{\code{end}}{end date of the downloads, it is a Date object.}
+#'   \item{\code{count}}{Download count.}
+#'   \item{\code{package}}{The package. This column is missing if
+#'     all packages were queried.}
 #'
 #' @details \code{last-day} is the last day for which data is available,
 #'  \code{last-week} is from 6 days prior to that last day with data, 
@@ -56,11 +67,17 @@ top_url   <- paste0(base_url, "top/")
 #'
 #' ## R downloads
 #' cran_downloads("R")
+#' 
+#' ## Total downloads for a package over a given period
+#' cran_downloads(packages = 'cranlog', from = "2014-06-30", 
+#'                to = "2014-08-08", total=TRUE)
+#' 
 #' }
 
 cran_downloads <- function(packages = NULL,
                            when = c("last-day", "last-week", "last-month"),
-                           from = "last-day", to = "last-day") {
+                           from = "last-day", to = "last-day",
+                           total = FALSE) {
 
   if (!missing(when)) {
     interval <- match.arg(when)
@@ -89,8 +106,14 @@ cran_downloads <- function(packages = NULL,
     ppackages <- paste(packages, collapse = ",")
     ppackages <- paste0("/", ppackages)
   }
-
-  req <- GET(paste0(daily_url, interval, ppackages),
+  
+  if (total){
+    request_url <- total_url
+  } else {
+    request_url <- daily_url   
+  }
+  
+  req <- GET(paste0(request_url, interval, ppackages),
              httr::user_agent("cranlogs R package by R-hub"))
   stop_for_status(req)
   r <- fromJSON(content(req, as = "text"), simplifyVector = FALSE)
@@ -98,8 +121,30 @@ cran_downloads <- function(packages = NULL,
   if ("error" %in% names(r) && r$error == "Invalid query") {
     stop("Invalid query, probably invalid dates")
   }
-  to_df(r, packages)
+  
+  if (total){
+    result <- to_df_total(r)
+  } else {
+    result <- to_df(r, packages)
+  }
 
+  result
+}
+
+to_df_total <- function(res){
+  num_columns <- 3
+  if ('package' %in% names(res[[1]])){
+    num_columns <- 4
+  }
+  
+  df <- data.frame(t(vapply(res, unlist, character(num_columns))),
+             stringsAsFactors = FALSE)
+  df$start <- as.Date(df$start)
+  df$end <- as.Date(df$end)
+  df$downloads <- as.integer(df$downloads)
+  # renaming downloads to count to stay consistent with output from the daily counts
+  names(df)[names(df) == "downloads"] <- "count" 
+  df
 }
 
 to_df <- function(res, packages) {
