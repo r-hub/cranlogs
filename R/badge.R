@@ -73,6 +73,7 @@ use_cranlogs_badge = function(
   summary = c("last-month", "last-day", 
               "last-week", "grand-total"),
   color = "blue") {
+  summary <- match.arg(summary)
   if ( !(requireNamespace("fs", quietly = TRUE) &&
          requireNamespace("usethis", quietly = TRUE) &&
          requireNamespace("desc", quietly = TRUE) &&
@@ -81,7 +82,13 @@ use_cranlogs_badge = function(
          "desc, and rprojroot packages")
   }
   package_name = project_name()
-  cranlogs_badge(package_name, 
-                 summary = summary, 
-                 color = color)
+  
+  pkg_url <- paste0("https://r-pkg.org/pkg/", package_name)
+  
+  badge_url <- paste0("https://cranlogs.r-pkg.org/badges/",
+                      summary, "/",
+                      package_name, 
+                      "?color=", color)
+
+  usethis::use_badge("CRAN RStudio mirror downloads", pkg_url, badge_url)
 }
