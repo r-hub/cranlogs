@@ -31,3 +31,57 @@ cranlogs_badge <- function(package_name,
          badge_url, ")](", pkg_url, ")")
   
 }
+
+project_name = function(base_path = usethis::proj_get()) {
+  # taken from usethis
+  proj_crit = function ()  {
+    rprojroot::has_file(".here") | 
+      rprojroot::is_rstudio_project | 
+      rprojroot::is_r_package | 
+      rprojroot::is_git_root | 
+      rprojroot::is_remake_project | 
+      rprojroot::is_projectile_project
+  }
+  
+  proj_find = function(path = ".") {
+    tryCatch(rprojroot::find_root(proj_crit(), path = path), 
+             error = function(e) NULL)
+  }
+  possibly_in_proj = function (path = ".") !is.null(proj_find(path))
+  if (!possibly_in_proj(base_path)) {
+    return(fs::path_file(base_path))
+  }
+  
+  is_package = function (base_path = usethis::proj_get()) 
+  {
+    res <- tryCatch(rprojroot::find_package_root_file(path = base_path), 
+                    error = function(e) NULL)
+    !is.null(res)
+  }
+  if (is_package(base_path)) {
+    desc <- desc::description$new(base_path)
+    as.list(desc$get(desc$fields()))$Package
+  }
+  else {
+    fs::path_file(base_path)
+  }
+}
+
+#' @rdname cranlogs_badge
+#' @export
+use_cranlogs_badge = function(
+  summary = c("last-month", "last-day", 
+              "last-week", "grand-total"),
+  color = "blue") {
+  if ( !(requireNamespace("fs", quietly = TRUE) &&
+         requireNamespace("usethis", quietly = TRUE) &&
+         requireNamespace("desc", quietly = TRUE) &&
+         requireNamespace("rprojroot", quietly = TRUE)) ) {
+    stop("Cannot use use_cranlogs_badge without fs, usethis, ", 
+         "desc, and rprojroot packages")
+  }
+  package_name = project_name()
+  cranlogs_badge(package_name, 
+                 summary = summary, 
+                 color = color)
+}

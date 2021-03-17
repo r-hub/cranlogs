@@ -4,8 +4,12 @@
 \alias{cran_downloads}
 \title{Daily package downloads from the RStudio CRAN mirror}
 \usage{
-cran_downloads(packages = NULL, when = c("last-day", "last-week",
-  "last-month"), from = "last-day", to = "last-day")
+cran_downloads(
+  packages = NULL,
+  when = c("last-day", "last-week", "last-month"),
+  from = "last-day",
+  to = "last-day"
+)
 }
 \arguments{
 \item{packages}{A character vector, the packages to query,
@@ -66,6 +70,7 @@ cran_downloads("R")
 }
 }
 \seealso{
-Other CRAN downloads: \code{\link{cran_top_downloads}}
+Other CRAN downloads: 
+\code{\link{cran_top_downloads}()}
 }
 \concept{CRAN downloads}

@@ -3,6 +3,7 @@
 export(cran_downloads)
 export(cran_top_downloads)
 export(cranlogs_badge)
+export(use_cranlogs_badge)
 importFrom(httr,GET)
 importFrom(httr,content)
 importFrom(httr,stop_for_status)
