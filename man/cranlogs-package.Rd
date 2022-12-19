@@ -6,9 +6,9 @@
 \alias{cranlogs-package}
 \title{cranlogs: Download Logs from the 'RStudio' 'CRAN' Mirror}
 \description{
-'API' to the database of 'CRAN' package downloads from the
-    'RStudio' 'CRAN mirror'. The database itself is at <http://cranlogs.r-pkg.org>,
-    see <https://github.com/r-hub/cranlogs.app> for the raw 'API'.
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+'API' to the database of 'CRAN' package downloads from the 'RStudio' 'CRAN mirror'. The database itself is at \url{http://cranlogs.r-pkg.org}, see \url{https://github.com/r-hub/cranlogs.app} for the raw 'API'.
 }
 \seealso{
 Useful links:

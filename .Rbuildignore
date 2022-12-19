@@ -11,3 +11,8 @@
 ^revdep$
 ^cran-comments.md$
 ^pkgdown$
+^.github$
+
+node_modules$
+package-lock\.json$
+package\.json$

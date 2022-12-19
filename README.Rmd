@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 > Download logs from the RStudio CRAN mirror
 
 <!-- badges: start -->
-[![Linux Build Status](https://travis-ci.org/r-hub/cranlogs.svg?branch=master)](https://travis-ci.org/r-hub/cranlogs)
+[![R build status](https://github.com/r-hub/cranlogs/workflows/rworkflows/badge.svg)](https://github.com/r-hub/cranlogs/actions)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/github/metacran/cranlogs?svg=true)](https://ci.appveyor.com/project/gaborcsardi/cranlogs)
 [![CRAN version](http://www.r-pkg.org/badges/version/cranlogs)](http://www.r-pkg.org/pkg/cranlogs)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/cranlogs)](http://www.r-pkg.org/pkg/cranlogs)

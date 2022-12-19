@@ -1,8 +1,9 @@
 Package: cranlogs
 Title: Download Logs from the 'RStudio' 'CRAN' Mirror
-Version: 2.1.1.9000
+Version: 2.1.2
 Authors@R: c(
-    person("Gábor", "Csárdi",, "csardi.gabor@gmail.com", role = c("aut", "cre")),
+    person(given="Gábor", family="Csárdi", email="csardi.gabor@gmail.com", role = c("aut", "cre")),
+    person(given="Brian", family="Schilder", email="brian.schilder@alumni.brown.edu", role = c("ctb"), comment = c(ORCID = "0000-0001-5949-2191")),
     person("R Consortium", role = c("fnd")))
 Description: 'API' to the database of 'CRAN' package downloads from the
     'RStudio' 'CRAN mirror'. The database itself is at <http://cranlogs.r-pkg.org>,
@@ -12,8 +13,9 @@ URL: https://github.com/r-hub/cranlogs, https://r-hub.github.io/cranlogs
 BugReports: https://github.com/r-hub/cranlogs/issues
 Imports:
     httr,
-    jsonlite
+    jsonlite,
+    parallel
 Encoding: UTF-8
-RoxygenNote: 6.1.1
+RoxygenNote: 7.2.3
 Suggests: 
     testthat

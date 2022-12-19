@@ -4,8 +4,14 @@
 \alias{cran_downloads}
 \title{Daily package downloads from the RStudio CRAN mirror}
 \usage{
-cran_downloads(packages = NULL, when = c("last-day", "last-week",
-  "last-month"), from = "last-day", to = "last-day")
+cran_downloads(
+  packages = NULL,
+  when = c("last-day", "last-week", "last-month"),
+  from = "last-day",
+  to = "last-day",
+  batch_size = 800,
+  mc.cores = 1
+)
 }
 \arguments{
 \item{packages}{A character vector, the packages to query,
@@ -21,6 +27,11 @@ details). If this is given, then \code{from} and \code{to} are ignored.}
 
 \item{to}{End date, in \code{yyyy-mm-dd} format, or
 \code{last-day}. It is ignored if \code{when} is given.}
+
+\item{batch_size}{Maximum batch size per query.
+A batch size <=800 is reccomended, as going above that can cause errors.}
+
+\item{mc.cores}{Number of cores to parallelise batched queries across.}
 }
 \value{
 For packages a data frame with columns:
@@ -44,7 +55,6 @@ Daily package downloads from the RStudio CRAN mirror
  for that day.
 }
 \examples{
-\dontrun{
 ## Default is last day for which data is available.
 cran_downloads()
 
@@ -62,10 +72,10 @@ cran_downloads(from = "2014-06-30", to = "2014-08-08")
 cran_downloads(packages = c("ggplot2", "plyr", "dplyr"))
 
 ## R downloads
-cran_downloads("R")
-}
+cran_downloads("R") 
 }
 \seealso{
-Other CRAN downloads: \code{\link{cran_top_downloads}}
+Other CRAN downloads: 
+\code{\link{cran_top_downloads}()}
 }
 \concept{CRAN downloads}
