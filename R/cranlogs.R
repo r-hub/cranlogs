@@ -198,15 +198,13 @@ fill_in_dates <- function(df, start, end) {
 #'
 #' @family CRAN downloads
 #' @export
-#' @examples
-#' \dontrun{
+#' @examples 
 #' ## Default is last day for which data is available.
 #' cran_top_downloads()
 #'
 #' ## Last week (6 days prior to the last day for which data is available) 
 #' ## instead
-#' cran_top_downloads(when = "last-week")
-#' }
+#' cran_top_downloads(when = "last-week") 
 #' 
 #' @details \code{last-day} is the last day for which data is available,
 #'  \code{last-week} is from 6 days prior to that last day with data, 
