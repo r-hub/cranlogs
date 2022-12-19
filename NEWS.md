@@ -8,6 +8,8 @@
 * Remove `dontrun{}` from `cran_downloads` example. Unclear why this was here?
 * New support function: `message_parallel`, `split_batches`
 * Replace travis (failing)  and pkgdown with `rworkflows`.
+* Update Authors in *DESCRIPTION* to reflect contribution, make fields explicit.
+* Add *node_modules$* to *.Rbuildignore*.
 
 # cranlogs 2.1.1
 
