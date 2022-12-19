@@ -19,6 +19,9 @@ top_url   <- paste0(base_url, "top/")
 #'   \code{last-day}. It is ignored if \code{when} is given.
 #' @param to End date, in \code{yyyy-mm-dd} format, or
 #'   \code{last-day}. It is ignored if \code{when} is given.
+#' @param batch_size Maximum batch size per query.
+#' A batch size <=800 is reccomended, as going above that can cause errors.
+#' @param mc.cores Number of cores to parallelise batched queries across.
 #' @return For packages a data frame with columns:
 #'   \item{\code{package}}{The package. This column is missing if
 #'     all packages were queried.}
@@ -36,8 +39,8 @@ top_url   <- paste0(base_url, "top/")
 #'  for that day.
 #' @family CRAN downloads
 #' @export
-#' @examples
-#' \dontrun{
+#' @importFrom parallel mclapply
+#' @examples 
 #' ## Default is last day for which data is available.
 #' cran_downloads()
 #'
@@ -55,16 +58,18 @@ top_url   <- paste0(base_url, "top/")
 #' cran_downloads(packages = c("ggplot2", "plyr", "dplyr"))
 #'
 #' ## R downloads
-#' cran_downloads("R")
-#' }
-
+#' cran_downloads("R") 
 cran_downloads <- function(packages = NULL,
                            when = c("last-day", "last-week", "last-month"),
-                           from = "last-day", to = "last-day") {
+                           from = "last-day", 
+                           to = "last-day",
+                           batch_size = 800,
+                           mc.cores = 1) {
 
   if (!missing(when)) {
     interval <- match.arg(when)
   } else {
+    when <- when[[1]] ### Take only first entry
     if (as.character(from) != "last-day") {
       check_date(from)
     }
@@ -78,28 +83,57 @@ cran_downloads <- function(packages = NULL,
     } else {
       interval <- paste(from, sep = ":", to)
     }
-  }
+  } 
+  #### Check packages ####
+  if (!is.null(packages) &&
+      "R" %in% packages && 
+      any(packages != "R")) {
+    stop("R downloads cannot be mixed with package downloads")
+  }  
+  #### Split into batches ####
+  t1 <- Sys.time()
+  batches <- split_batches(v = packages, 
+                           batch_size = batch_size)
+  df <- parallel::mclapply(seq_len(length(batches)), function(i){
+    b <- batches[[i]]
+    message_parallel(paste("Batch:",i,"/",length(batches)))
+    query(interval=interval, 
+          packages=b)
+  }, mc.cores = mc.cores) 
+  #### Bind all batch results ####
+  df <- do.call(rbind,df)
+  ### Report total time taken ####
+  round(difftime(Sys.time(),t1),1)
+  return(df)
+}
 
+query <- function(interval, 
+                  packages){
+  #### Prepare URI  ####
   if (is.null(packages)) {
     ppackages <- ""
   } else {
-    if ("R" %in% packages && any(packages != "R")) {
-      stop("R downloads cannot be mixed with package downloads")
-    }
     ppackages <- paste(packages, collapse = ",")
     ppackages <- paste0("/", ppackages)
-  }
-
+  } 
+  #### Request data ####
   req <- GET(paste0(daily_url, interval, ppackages),
              httr::user_agent("cranlogs R package by R-hub"))
-  stop_for_status(req)
+  #### Handle errors due to too many packages ###
+  status <- tryCatch({
+    stop_for_status(req)
+  }, error=function(e){e})
+  if(grepl("Request-URI Too Long (HTTP 414)",as.character(status))){
+    stop("Request-URI Too Long (HTTP 414): Try reducing `batch_size`.")
+  }
+  #### Access content ####
   r <- fromJSON(content(req, as = "text"), simplifyVector = FALSE)
-
+  #### Check content ####
   if ("error" %in% names(r) && r$error == "Invalid query") {
     stop("Invalid query, probably invalid dates")
   }
+  #### Convert to data.frame ####
   to_df(r, packages)
-
 }
 
 to_df <- function(res, packages) {
@@ -150,7 +184,7 @@ fill_in_dates <- function(df, start, end) {
     rownames(df) <- NULL
   }
   df
-}
+} 
 
 #' Top downloaded packages from the RStudio CRAN mirror
 #'

@@ -1,5 +1,13 @@
 
-# dev
+# cranlogs 2.1.2
+
+* Fix `cran_downloads` and prevent it from failing with many packages:
+  https://github.com/r-hub/cranlogs/issues/56
+* Speed up `cran_downloads` with parallelisation.
+* Add new unit test for `cran_downloads` with lots of packages.
+* Remove `dontrun{}` from `cran_downloads` example. Unclear why this was here?
+* New support function: `message_parallel`, `split_batches`
+* Replace travis (failing)  and pkgdown with `rworkflows`.
 
 # cranlogs 2.1.1
 
